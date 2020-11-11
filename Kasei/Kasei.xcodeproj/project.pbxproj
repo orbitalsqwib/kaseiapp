@@ -3,19 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79093E8E88FAC0A549BCEEAA /* Pods_Kasei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A46E85B938EAB612295B2E /* Pods_Kasei.framework */; };
 		CBABBCD4255B7AD00092A0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABBCD3255B7AD00092A0D5 /* AppDelegate.swift */; };
 		CBABBCD6255B7AD00092A0D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABBCD5255B7AD00092A0D5 /* SceneDelegate.swift */; };
 		CBABBCD8255B7AD00092A0D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABBCD7255B7AD00092A0D5 /* ViewController.swift */; };
 		CBABBCDB255B7AD00092A0D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBABBCD9255B7AD00092A0D5 /* Main.storyboard */; };
 		CBABBCDD255B7AD20092A0D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBABBCDC255B7AD20092A0D5 /* Assets.xcassets */; };
 		CBABBCE0255B7AD20092A0D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBABBCDE255B7AD20092A0D5 /* LaunchScreen.storyboard */; };
+		CBABBCFB255B7F720092A0D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBABBCFA255B7F720092A0D5 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04AA637350E9D6FCF530585D /* Pods-Kasei.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kasei.release.xcconfig"; path = "Target Support Files/Pods-Kasei/Pods-Kasei.release.xcconfig"; sourceTree = "<group>"; };
+		6D6B8E49A2699A4576EEC0E8 /* Pods-Kasei.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kasei.debug.xcconfig"; path = "Target Support Files/Pods-Kasei/Pods-Kasei.debug.xcconfig"; sourceTree = "<group>"; };
+		B5A46E85B938EAB612295B2E /* Pods_Kasei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kasei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBABBCD0255B7AD00092A0D5 /* Kasei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kasei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBABBCD3255B7AD00092A0D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBABBCD5255B7AD00092A0D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +29,7 @@
 		CBABBCDC255B7AD20092A0D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBABBCDF255B7AD20092A0D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBABBCE1255B7AD20092A0D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBABBCFA255B7F720092A0D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79093E8E88FAC0A549BCEEAA /* Pods_Kasei.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A60BF093F837E562A387D58 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5A46E85B938EAB612295B2E /* Pods_Kasei.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6E689681A708EB8F43BEF249 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6D6B8E49A2699A4576EEC0E8 /* Pods-Kasei.debug.xcconfig */,
+				04AA637350E9D6FCF530585D /* Pods-Kasei.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CBABBCC7255B7AD00092A0D5 = {
 			isa = PBXGroup;
 			children = (
 				CBABBCD2255B7AD00092A0D5 /* Kasei */,
 				CBABBCD1255B7AD00092A0D5 /* Products */,
+				6E689681A708EB8F43BEF249 /* Pods */,
+				2A60BF093F837E562A387D58 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +82,48 @@
 		CBABBCD2255B7AD00092A0D5 /* Kasei */ = {
 			isa = PBXGroup;
 			children = (
-				CBABBCD3255B7AD00092A0D5 /* AppDelegate.swift */,
-				CBABBCD5255B7AD00092A0D5 /* SceneDelegate.swift */,
-				CBABBCD7255B7AD00092A0D5 /* ViewController.swift */,
-				CBABBCD9255B7AD00092A0D5 /* Main.storyboard */,
+				CBABBD0A255B80BF0092A0D5 /* Delegates */,
+				CBABBD0B255B80D30092A0D5 /* Controllers */,
+				CBABBCEB255B7E0B0092A0D5 /* Storyboards */,
 				CBABBCDC255B7AD20092A0D5 /* Assets.xcassets */,
-				CBABBCDE255B7AD20092A0D5 /* LaunchScreen.storyboard */,
-				CBABBCE1255B7AD20092A0D5 /* Info.plist */,
+				CBABBCEC255B7E250092A0D5 /* Property Lists */,
 			);
 			path = Kasei;
+			sourceTree = "<group>";
+		};
+		CBABBCEB255B7E0B0092A0D5 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CBABBCDE255B7AD20092A0D5 /* LaunchScreen.storyboard */,
+				CBABBCD9255B7AD00092A0D5 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		CBABBCEC255B7E250092A0D5 /* Property Lists */ = {
+			isa = PBXGroup;
+			children = (
+				CBABBCFA255B7F720092A0D5 /* GoogleService-Info.plist */,
+				CBABBCE1255B7AD20092A0D5 /* Info.plist */,
+			);
+			name = "Property Lists";
+			sourceTree = "<group>";
+		};
+		CBABBD0A255B80BF0092A0D5 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CBABBCD3255B7AD00092A0D5 /* AppDelegate.swift */,
+				CBABBCD5255B7AD00092A0D5 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		CBABBD0B255B80D30092A0D5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CBABBCD7255B7AD00092A0D5 /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBABBCE4255B7AD20092A0D5 /* Build configuration list for PBXNativeTarget "Kasei" */;
 			buildPhases = (
+				409DC932B7526BC5FF85A324 /* [CP] Check Pods Manifest.lock */,
 				CBABBCCC255B7AD00092A0D5 /* Sources */,
 				CBABBCCD255B7AD00092A0D5 /* Frameworks */,
 				CBABBCCE255B7AD00092A0D5 /* Resources */,
+				9033ECEB6AB70A56AD8B09F6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,12 +186,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBABBCE0255B7AD20092A0D5 /* LaunchScreen.storyboard in Resources */,
+				CBABBCFB255B7F720092A0D5 /* GoogleService-Info.plist in Resources */,
 				CBABBCDD255B7AD20092A0D5 /* Assets.xcassets in Resources */,
 				CBABBCDB255B7AD00092A0D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		409DC932B7526BC5FF85A324 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Kasei-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9033ECEB6AB70A56AD8B09F6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kasei/Pods-Kasei-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kasei/Pods-Kasei-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kasei/Pods-Kasei-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CBABBCCC255B7AD00092A0D5 /* Sources */ = {
@@ -283,15 +387,18 @@
 		};
 		CBABBCE5255B7AD20092A0D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D6B8E49A2699A4576EEC0E8 /* Pods-Kasei.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				INFOPLIST_FILE = Kasei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = orbitalsqwib.developer.Kasei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -301,15 +408,18 @@
 		};
 		CBABBCE6255B7AD20092A0D5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04AA637350E9D6FCF530585D /* Pods-Kasei.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				INFOPLIST_FILE = Kasei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = orbitalsqwib.developer.Kasei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -1,0 +1,6 @@
+framework module Pods_Kasei {
+  umbrella header "Pods-Kasei-umbrella.h"
+
+  export *
+  module * { export * }
+}

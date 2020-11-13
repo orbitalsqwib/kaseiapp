@@ -8,28 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		79093E8E88FAC0A549BCEEAA /* Pods_Kasei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A46E85B938EAB612295B2E /* Pods_Kasei.framework */; };
+		CB396B85255CF148006B154C /* MNButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB396B84255CF148006B154C /* MNButton.swift */; };
+		CBA1065D255E001F00A44DED /* UINavBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1065C255E001F00A44DED /* UINavBarExtension.swift */; };
+		CBAAEC86255CCB8600621139 /* MoreInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEC85255CCB8600621139 /* MoreInfoViewController.swift */; };
+		CBAAEC8C255CE41100621139 /* LoginField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAAEC8B255CE41100621139 /* LoginField.swift */; };
 		CBABBCD4255B7AD00092A0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABBCD3255B7AD00092A0D5 /* AppDelegate.swift */; };
 		CBABBCD6255B7AD00092A0D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABBCD5255B7AD00092A0D5 /* SceneDelegate.swift */; };
-		CBABBCD8255B7AD00092A0D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABBCD7255B7AD00092A0D5 /* ViewController.swift */; };
 		CBABBCDB255B7AD00092A0D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBABBCD9255B7AD00092A0D5 /* Main.storyboard */; };
 		CBABBCDD255B7AD20092A0D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBABBCDC255B7AD20092A0D5 /* Assets.xcassets */; };
 		CBABBCE0255B7AD20092A0D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBABBCDE255B7AD20092A0D5 /* LaunchScreen.storyboard */; };
 		CBABBCFB255B7F720092A0D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBABBCFA255B7F720092A0D5 /* GoogleService-Info.plist */; };
+		CBABBD1D255B87960092A0D5 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBABBD1C255B87960092A0D5 /* Login.storyboard */; };
+		CBABBD24255BB2C70092A0D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABBD23255BB2C70092A0D5 /* LoginViewController.swift */; };
+		CBABE976255D3770002C2BBC /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBABE975255D3770002C2BBC /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04AA637350E9D6FCF530585D /* Pods-Kasei.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kasei.release.xcconfig"; path = "Target Support Files/Pods-Kasei/Pods-Kasei.release.xcconfig"; sourceTree = "<group>"; };
 		6D6B8E49A2699A4576EEC0E8 /* Pods-Kasei.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kasei.debug.xcconfig"; path = "Target Support Files/Pods-Kasei/Pods-Kasei.debug.xcconfig"; sourceTree = "<group>"; };
 		B5A46E85B938EAB612295B2E /* Pods_Kasei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kasei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB396B84255CF148006B154C /* MNButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MNButton.swift; sourceTree = "<group>"; };
+		CBA1065C255E001F00A44DED /* UINavBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavBarExtension.swift; sourceTree = "<group>"; };
+		CBAAEC85255CCB8600621139 /* MoreInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoViewController.swift; sourceTree = "<group>"; };
+		CBAAEC8B255CE41100621139 /* LoginField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginField.swift; sourceTree = "<group>"; };
 		CBABBCD0255B7AD00092A0D5 /* Kasei.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kasei.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBABBCD3255B7AD00092A0D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CBABBCD5255B7AD00092A0D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CBABBCD7255B7AD00092A0D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CBABBCDA255B7AD00092A0D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CBABBCDC255B7AD20092A0D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBABBCDF255B7AD20092A0D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CBABBCE1255B7AD20092A0D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBABBCFA255B7F720092A0D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CBABBD1C255B87960092A0D5 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		CBABBD23255BB2C70092A0D5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CBABE975255D3770002C2BBC /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +73,31 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CBA1065B255DFFF500A44DED /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CBA1065C255E001F00A44DED /* UINavBarExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CBAAEC89255CE3F900621139 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CB396B84255CF148006B154C /* MNButton.swift */,
+				CBABE975255D3770002C2BBC /* PaddingLabel.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CBAAEC8A255CE40500621139 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				CBAAEC8B255CE41100621139 /* LoginField.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
 		CBABBCC7255B7AD00092A0D5 = {
 			isa = PBXGroup;
 			children = (
@@ -82,29 +119,32 @@
 		CBABBCD2255B7AD00092A0D5 /* Kasei */ = {
 			isa = PBXGroup;
 			children = (
+				CBA1065B255DFFF500A44DED /* Extensions */,
+				CBAAEC8A255CE40500621139 /* Structs */,
+				CBAAEC89255CE3F900621139 /* Classes */,
 				CBABBD0A255B80BF0092A0D5 /* Delegates */,
-				CBABBD0B255B80D30092A0D5 /* Controllers */,
-				CBABBCEB255B7E0B0092A0D5 /* Storyboards */,
+				CBABBCEB255B7E0B0092A0D5 /* LaunchScreen */,
+				CBABBD0B255B80D30092A0D5 /* Login */,
+				CBABBD22255BB29C0092A0D5 /* Main */,
 				CBABBCDC255B7AD20092A0D5 /* Assets.xcassets */,
 				CBABBCEC255B7E250092A0D5 /* Property Lists */,
 			);
 			path = Kasei;
 			sourceTree = "<group>";
 		};
-		CBABBCEB255B7E0B0092A0D5 /* Storyboards */ = {
+		CBABBCEB255B7E0B0092A0D5 /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
 				CBABBCDE255B7AD20092A0D5 /* LaunchScreen.storyboard */,
-				CBABBCD9255B7AD00092A0D5 /* Main.storyboard */,
 			);
-			path = Storyboards;
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		CBABBCEC255B7E250092A0D5 /* Property Lists */ = {
 			isa = PBXGroup;
 			children = (
-				CBABBCFA255B7F720092A0D5 /* GoogleService-Info.plist */,
 				CBABBCE1255B7AD20092A0D5 /* Info.plist */,
+				CBABBCFA255B7F720092A0D5 /* GoogleService-Info.plist */,
 			);
 			name = "Property Lists";
 			sourceTree = "<group>";
@@ -118,12 +158,22 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		CBABBD0B255B80D30092A0D5 /* Controllers */ = {
+		CBABBD0B255B80D30092A0D5 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CBABBCD7255B7AD00092A0D5 /* ViewController.swift */,
+				CBABBD1C255B87960092A0D5 /* Login.storyboard */,
+				CBABBD23255BB2C70092A0D5 /* LoginViewController.swift */,
+				CBAAEC85255CCB8600621139 /* MoreInfoViewController.swift */,
 			);
-			path = Controllers;
+			path = Login;
+			sourceTree = "<group>";
+		};
+		CBABBD22255BB29C0092A0D5 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CBABBCD9255B7AD00092A0D5 /* Main.storyboard */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +238,7 @@
 				CBABBCE0255B7AD20092A0D5 /* LaunchScreen.storyboard in Resources */,
 				CBABBCFB255B7F720092A0D5 /* GoogleService-Info.plist in Resources */,
 				CBABBCDD255B7AD20092A0D5 /* Assets.xcassets in Resources */,
+				CBABBD1D255B87960092A0D5 /* Login.storyboard in Resources */,
 				CBABBCDB255B7AD00092A0D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,9 +292,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBABBCD8255B7AD00092A0D5 /* ViewController.swift in Sources */,
+				CBAAEC8C255CE41100621139 /* LoginField.swift in Sources */,
+				CBABE976255D3770002C2BBC /* PaddingLabel.swift in Sources */,
+				CBABBD24255BB2C70092A0D5 /* LoginViewController.swift in Sources */,
+				CBAAEC86255CCB8600621139 /* MoreInfoViewController.swift in Sources */,
 				CBABBCD4255B7AD00092A0D5 /* AppDelegate.swift in Sources */,
+				CB396B85255CF148006B154C /* MNButton.swift in Sources */,
 				CBABBCD6255B7AD00092A0D5 /* SceneDelegate.swift in Sources */,
+				CBA1065D255E001F00A44DED /* UINavBarExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +448,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 7K6ZTDFM48;
 				INFOPLIST_FILE = Kasei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -413,7 +470,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 7K6ZTDFM48;
 				INFOPLIST_FILE = Kasei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

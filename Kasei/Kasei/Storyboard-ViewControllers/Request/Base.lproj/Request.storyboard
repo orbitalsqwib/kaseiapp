@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UsI-TW-U2Q">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--New Request-->
+        <scene sceneID="KDb-3R-2fZ">
+            <objects>
+                <viewController id="2Go-Lu-LkQ" customClass="NewRequestViewController" customModule="Kasei" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zm0-dh-fP3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qul-Pp-yxI">
+                                <rect key="frame" x="0.0" y="148.5" width="414" height="747.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JsI-fh-zPu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Qul-Pp-yxI" secondAttribute="bottom" id="4xi-kK-ylq"/>
+                            <constraint firstItem="Qul-Pp-yxI" firstAttribute="leading" secondItem="JsI-fh-zPu" secondAttribute="leading" id="ADI-OB-vMx"/>
+                            <constraint firstItem="JsI-fh-zPu" firstAttribute="trailing" secondItem="Qul-Pp-yxI" secondAttribute="trailing" id="iJP-L0-VxF"/>
+                            <constraint firstItem="Qul-Pp-yxI" firstAttribute="top" secondItem="JsI-fh-zPu" secondAttribute="top" id="oKP-jG-bl6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Request" largeTitleDisplayMode="always" id="eBR-to-MVg">
+                        <barButtonItem key="rightBarButtonItem" id="zcP-7P-q25">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RZc-j8-bHI">
+                                <rect key="frame" x="362" y="6" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="Destructive"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" name="Destructive Text"/>
+                                <state key="normal" image="xmark" catalog="system">
+                                    <color key="titleColor" name="Destructive Text"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="semibold"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clickedCancel:" destination="2Go-Lu-LkQ" eventType="touchUpInside" id="tx3-Tl-6VD"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="requestItemsTableView" destination="Qul-Pp-yxI" id="VnB-mA-ztP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T4I-l5-Q9d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-155.07246376811597" y="28.794642857142854"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Ye-SB-sI7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UsI-TW-U2Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Ncl-sR-oLf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="44"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2Go-Lu-LkQ" kind="relationship" relationship="rootViewController" id="RvL-pR-PQs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cDz-k5-gCR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-932" y="29"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" name="Tint"/>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="Destructive">
+            <color red="1" green="0.23899999260902405" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Destructive Text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Tint">
+            <color red="0.035000000149011612" green="0.51800000667572021" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -11,14 +11,13 @@ import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let firAuth = Auth.auth()
+    let authHandler = FirAuthHandler.self
     
     func presentLoginScreen() {
-        let vc = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
-        window?.makeKeyAndVisible()
-        guard let loginVC = vc else { return }
-        loginVC.modalPresentationStyle = .fullScreen
-        window?.rootViewController?.present(loginVC, animated: true, completion: nil)
+        if window?.rootViewController != nil {
+            window?.makeKeyAndVisible()
+            FirAuthHandler.presentSignin(over: (window?.rootViewController)!)
+        }
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -27,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         //TODO: Check auth details and decide on course of action
-        if firAuth.currentUser == nil {
+        if !authHandler.loggedIn() {
             presentLoginScreen()
         }
         

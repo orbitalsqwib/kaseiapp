@@ -42,15 +42,17 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         DBRef.child("userRequests/\(uid)").observe(.value) { (snapshot) in
+            var requests = [Request]()
             var counter = snapshot.childrenCount
             for child in snapshot.children {
                 let childSnap = child as! DataSnapshot
                 let id = childSnap.value as! String
                 getRequest(DBRef: self.DBRef, forID: id) { (r) in
-                    if r != nil { self.userRequests.append(r!) }
+                    if r != nil { requests.append(r!) }
                     counter -= 1
                     if counter == 0 {
-                        self.requestTableView.reloadSections(.init(arrayLiteral: 1), with: .fade)
+                        self.userRequests = requests.reversed()
+                        self.requestTableView.reloadData()
                     }
                 }
             }
@@ -128,6 +130,10 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func presentMoreDetails(cell: RequestSummaryCell) {
         presentDetailView(for: cell)
+    }
+    
+    @IBAction func unwindToLandingVC(_ segue: UIStoryboardSegue) {
+        self.requestTableView.reloadData()
     }
 
     /*

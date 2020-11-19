@@ -88,6 +88,7 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func clickedSend(_ sender: Any) {
+        self.isModalInPresentation = true
         guard let detailCell = checkoutTableView.cellForRow(at: .init(row: 0, section: 1)) as? CheckoutDetailCell else {
             return
         }
@@ -96,9 +97,44 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         request?.status = "Request Sent"
         
         let DBRef = Database.database().reference()
+        
+        showResultCard()
         if let req = request {
-            postRequest(DBRef: DBRef, req: req)
+            postRequest(DBRef: DBRef, req: req) { (err, err2) in
+                self.resultLoadIndicator.stopAnimating()
+                self.resultCardIcon.isHidden = false
+                if err == nil && err2 == nil {
+                    self.resultDisplaySuccess()
+                } else {
+                    self.resultDisplayFailure()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now()+1.0) {
+                    self.returnToMain()
+                }
+            }
         }
+    }
+    
+    func showResultCard() {
+        resultCardContainer.isHidden = false
+        resultLoadIndicator.startAnimating()
+        resultCardText.text = "Sending..."
+    }
+    
+    func resultDisplaySuccess() {
+        resultCardIcon.image = UIImage(systemName: "checkmark.circle.fill")
+        resultCardIcon.tintColor = UIColor(named: "Accent Static")
+        resultCardText.text = "Success!"
+    }
+    
+    func resultDisplayFailure() {
+        resultCardIcon.image = UIImage(systemName: "xmark.circle.fill")
+        resultCardIcon.tintColor = UIColor(named: "Destructive")
+        resultCardText.text = "Something went wrong!"
+    }
+    
+    func returnToMain() {
+        performSegue(withIdentifier: "unwindToLanding", sender: self)
     }
     
     func buttonClicked(reuseId: String) {

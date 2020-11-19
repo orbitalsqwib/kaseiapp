@@ -187,7 +187,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAB-ft-SF0" userLabel="resultCardContainer">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAB-ft-SF0" userLabel="resultCardContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOr-XN-oNh">
@@ -215,12 +215,14 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="oOr-XN-oNh" secondAttribute="height" multiplier="13:16" id="AZT-Ej-wqg"/>
                                             <constraint firstItem="3wR-7u-Lzb" firstAttribute="centerX" secondItem="oOr-XN-oNh" secondAttribute="centerX" id="Cnw-ae-KgR"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MPA-cs-Pv3" secondAttribute="trailing" constant="16" id="IcB-2b-vx3"/>
                                             <constraint firstItem="3wR-7u-Lzb" firstAttribute="centerY" secondItem="oOr-XN-oNh" secondAttribute="centerY" multiplier="0.75" id="KQL-qk-bss"/>
                                             <constraint firstItem="OOW-Di-lMN" firstAttribute="top" secondItem="3wR-7u-Lzb" secondAttribute="top" id="WJh-5k-Ly2"/>
                                             <constraint firstItem="OOW-Di-lMN" firstAttribute="bottom" secondItem="3wR-7u-Lzb" secondAttribute="bottom" id="WMb-2v-yrr"/>
                                             <constraint firstAttribute="bottom" secondItem="MPA-cs-Pv3" secondAttribute="bottom" priority="250" constant="32" id="Ws7-yS-cJT"/>
                                             <constraint firstItem="OOW-Di-lMN" firstAttribute="trailing" secondItem="3wR-7u-Lzb" secondAttribute="trailing" id="XMO-AZ-pFB"/>
                                             <constraint firstItem="MPA-cs-Pv3" firstAttribute="centerX" secondItem="oOr-XN-oNh" secondAttribute="centerX" id="hK0-sj-gHY"/>
+                                            <constraint firstItem="MPA-cs-Pv3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oOr-XN-oNh" secondAttribute="leading" constant="16" id="tPW-2y-TrY"/>
                                             <constraint firstItem="MPA-cs-Pv3" firstAttribute="top" secondItem="3wR-7u-Lzb" secondAttribute="bottom" constant="32" id="tS3-Lo-ZVd"/>
                                             <constraint firstItem="3wR-7u-Lzb" firstAttribute="width" secondItem="oOr-XN-oNh" secondAttribute="width" multiplier="0.45" id="ucN-wm-X50"/>
                                             <constraint firstItem="OOW-Di-lMN" firstAttribute="leading" secondItem="3wR-7u-Lzb" secondAttribute="leading" id="vic-3h-4s6"/>
@@ -231,11 +233,18 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jx-i3-DgL">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="9jx-i3-DgL" firstAttribute="leading" secondItem="VAB-ft-SF0" secondAttribute="leading" id="1mu-PW-Tsd"/>
                                     <constraint firstItem="oOr-XN-oNh" firstAttribute="centerX" secondItem="VAB-ft-SF0" secondAttribute="centerX" id="1uK-AR-M5A"/>
+                                    <constraint firstItem="9jx-i3-DgL" firstAttribute="top" secondItem="VAB-ft-SF0" secondAttribute="top" id="FNY-is-Gtw"/>
+                                    <constraint firstAttribute="trailing" secondItem="9jx-i3-DgL" secondAttribute="trailing" id="Lc9-wj-63V"/>
                                     <constraint firstItem="oOr-XN-oNh" firstAttribute="width" secondItem="VAB-ft-SF0" secondAttribute="width" multiplier="0.75" id="PPv-IK-KhW"/>
+                                    <constraint firstAttribute="bottom" secondItem="9jx-i3-DgL" secondAttribute="bottom" id="Ygm-il-yKs"/>
                                     <constraint firstItem="oOr-XN-oNh" firstAttribute="centerY" secondItem="VAB-ft-SF0" secondAttribute="centerY" id="d5s-FM-AXg"/>
                                 </constraints>
                             </view>
@@ -267,11 +276,21 @@
                         <outlet property="resultCardIcon" destination="3wR-7u-Lzb" id="qDl-v2-5z6"/>
                         <outlet property="resultCardText" destination="MPA-cs-Pv3" id="8Gm-u9-9Cf"/>
                         <outlet property="resultLoadIndicator" destination="OOW-Di-lMN" id="hta-Ta-VTV"/>
+                        <segue destination="r7c-UO-gGc" kind="unwind" identifier="unwindToLanding" unwindAction="unwindToLandingVC:" id="ln5-vk-kPQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Or9-Tz-lAQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="647.82608695652175" y="28.794642857142854"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="1Ge-1N-4nY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="f1i-4w-EQ5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MuJ-7t-kmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="r7c-UO-gGc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1214" y="-290"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Ye-SB-sI7">

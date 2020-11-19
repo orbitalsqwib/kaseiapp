@@ -29,7 +29,7 @@ struct Request: Codable {
     }
 }
 
-func postRequest(DBRef: DatabaseReference, req: Request) {
+func postRequest(DBRef: DatabaseReference, req: Request, onComplete: @escaping (Error?, Error?) -> ()) {
     let authHandler = FirAuthHandler.self
     guard let uid = authHandler.firAuth.currentUser?.uid else {
         return
@@ -43,9 +43,20 @@ func postRequest(DBRef: DatabaseReference, req: Request) {
     let now = Calendar.current.dateComponents(in: .current, from: Date())
     let tmr = DateComponents(year: now.year, month: now.month, day: now.day, hour: 8)
     let defaultSlot = Calendar.current.date(from: tmr)!.timeIntervalSince1970
-    let delSlotStart = Int64((req.delSlotStart?.timeIntervalSince1970 ?? defaultSlot * 1000).rounded())
+    let delSlotStart = Int64((req.delSlotStart?.timeIntervalSince1970 ?? defaultSlot * 1000).rounded()) * 1000
     
-    DBRef.child("TESTREQUESTS").childByAutoId().setValue(["content": items, "delSlotStart" : delSlotStart, "senderID" : req.senderID, "status" : req.status ?? ""])
+    let reqDict = ["content": items, "delSlotStart" : delSlotStart, "senderID" : req.senderID, "status" : req.status ?? ""] as [String : Any]
+    
+    let reqID = DBRef.child("requests").childByAutoId()
+    reqID.setValue(reqDict) { (err, _) in
+        if err != nil {
+            onComplete(err, nil)
+        } else {
+            DBRef.child("userRequests/\(uid)").childByAutoId().setValue(reqID.key) { (err2, _) in
+                onComplete(err, err2)
+            }
+        }
+    }
 }
 
 func getRequest(DBRef: DatabaseReference, forID id: String, onComplete: @escaping (Request?) -> ()) {

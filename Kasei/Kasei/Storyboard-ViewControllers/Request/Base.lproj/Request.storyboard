@@ -21,14 +21,54 @@
                                 <rect key="frame" x="0.0" y="148.5" width="414" height="747.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQR-VV-HsJ">
+                                <rect key="frame" x="16" y="806" width="382" height="56"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGY-UD-c4m">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                                        <color key="backgroundColor" name="Accent Static"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="b2V-vD-bi8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <color key="tintColor" name="Tint"/>
+                                        <state key="normal" title="Checkout">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="clickedCheckout:" destination="2Go-Lu-LkQ" eventType="touchUpInside" id="tTj-qk-9Th"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="Background Elevated"/>
+                                <constraints>
+                                    <constraint firstItem="kGY-UD-c4m" firstAttribute="leading" secondItem="aQR-VV-HsJ" secondAttribute="leading" id="1ie-VD-YEV"/>
+                                    <constraint firstItem="kGY-UD-c4m" firstAttribute="top" secondItem="aQR-VV-HsJ" secondAttribute="top" id="HCs-iv-cb8"/>
+                                    <constraint firstAttribute="bottom" secondItem="kGY-UD-c4m" secondAttribute="bottom" id="bcl-GP-6UV"/>
+                                    <constraint firstAttribute="trailing" secondItem="kGY-UD-c4m" secondAttribute="trailing" id="t5Y-6E-EuP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JsI-fh-zPu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Qul-Pp-yxI" secondAttribute="bottom" id="4xi-kK-ylq"/>
-                            <constraint firstItem="Qul-Pp-yxI" firstAttribute="leading" secondItem="JsI-fh-zPu" secondAttribute="leading" id="ADI-OB-vMx"/>
-                            <constraint firstItem="JsI-fh-zPu" firstAttribute="trailing" secondItem="Qul-Pp-yxI" secondAttribute="trailing" id="iJP-L0-VxF"/>
-                            <constraint firstItem="Qul-Pp-yxI" firstAttribute="top" secondItem="JsI-fh-zPu" secondAttribute="top" id="oKP-jG-bl6"/>
+                            <constraint firstItem="JsI-fh-zPu" firstAttribute="bottom" secondItem="aQR-VV-HsJ" secondAttribute="bottom" id="BL6-lA-t8B"/>
+                            <constraint firstItem="Qul-Pp-yxI" firstAttribute="leading" secondItem="JsI-fh-zPu" secondAttribute="leading" id="bv2-ac-psU"/>
+                            <constraint firstItem="Qul-Pp-yxI" firstAttribute="top" secondItem="JsI-fh-zPu" secondAttribute="top" id="fX6-SX-z7y"/>
+                            <constraint firstAttribute="bottom" secondItem="Qul-Pp-yxI" secondAttribute="bottom" id="gIV-bL-dqi"/>
+                            <constraint firstItem="Qul-Pp-yxI" firstAttribute="trailing" secondItem="JsI-fh-zPu" secondAttribute="trailing" id="oBE-50-8sS"/>
+                            <constraint firstItem="JsI-fh-zPu" firstAttribute="trailing" secondItem="aQR-VV-HsJ" secondAttribute="trailing" constant="16" id="oey-P1-vzo"/>
+                            <constraint firstItem="aQR-VV-HsJ" firstAttribute="leading" secondItem="JsI-fh-zPu" secondAttribute="leading" constant="16" id="wKh-fg-fOm"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Request" largeTitleDisplayMode="always" id="eBR-to-MVg">
@@ -55,6 +95,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="actionBar" destination="aQR-VV-HsJ" id="sc4-E6-inR"/>
+                        <outlet property="checkoutBtn" destination="kGY-UD-c4m" id="vdn-P2-ssM"/>
                         <outlet property="requestItemsTableView" destination="Qul-Pp-yxI" id="VnB-mA-ztP"/>
                     </connections>
                 </viewController>
@@ -90,6 +132,12 @@
     <color key="tintColor" name="Tint"/>
     <resources>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="Accent Static">
+            <color red="0.0" green="0.98100000619888306" blue="0.57400000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Background Elevated">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Destructive">
             <color red="1" green="0.23899999260902405" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

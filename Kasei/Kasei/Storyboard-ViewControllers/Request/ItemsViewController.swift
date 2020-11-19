@@ -72,46 +72,15 @@ class ItemsViewController: CardDetailVC, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    func updateCount(for cell: RequestItemCell, modifier: Int) {
-        guard let index = cardTableView.indexPath(for: cell)?.row else {
-            return
-        }
-        
-        let item = items[index]
-        
-        if modifier > 0 {
-            if cell.count == 0 {
-                if delegate != nil {
-                    delegate?.addItem(item: item)
-                }
-            }
-        } else {
-            if cell.count == 1 {
-                if delegate != nil {
-                    delegate?.removeItem(item: item)
-                    item.qty += modifier
-                    cell.count += modifier
-                    return
-                }
-            } else if cell.count == 0 {
-                return
-            }
-        }
-        item.qty += modifier
-        cell.count += modifier
-        delegate?.updateItemCount(item: item, newCount: item.qty)
-    }
-    
     func plusClicked(for cell: RequestItemCell) {
-        updateCount(for: cell, modifier: 1)
+        updateCountForItemHandler(for: cardTableView, with: delegate, using: cell, items: items, modifier: 1)
     }
     
     func minusClicked(for cell: RequestItemCell) {
-        updateCount(for: cell, modifier: -1)
+        updateCountForItemHandler(for: cardTableView, with: delegate, using: cell, items: items, modifier: -1)
     }
     
     func cellTapped(for cell: RequestItemCell) { }
-    
 
     /*
     // MARK: - Navigation

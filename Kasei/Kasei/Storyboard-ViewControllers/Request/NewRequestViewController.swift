@@ -109,6 +109,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
         newRequest!.items.removeAll { (requestItem) -> Bool in
             requestItem.name == item.name
         }
+        requestItemsTableView.reloadSections(.init(arrayLiteral: 1), with: .fade)
     }
     
     func updateItemCount(item: RequestItem, newCount: Int) {

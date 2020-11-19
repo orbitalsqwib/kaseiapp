@@ -14,6 +14,7 @@
 		CB53B08925654DF00019DF5E /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB53B08825654DF00019DF5E /* ItemsViewController.swift */; };
 		CB53B08D2565530B0019DF5E /* RequestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB53B08C2565530B0019DF5E /* RequestItem.swift */; };
 		CB53B091256554AB0019DF5E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB53B090256554AB0019DF5E /* Request.swift */; };
+		CB53B0D82566407B0019DF5E /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB53B0D72566407B0019DF5E /* ItemCategory.swift */; };
 		CB6FCEF2256532A800CC03C0 /* RequestSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FCEF0256532A800CC03C0 /* RequestSummaryCell.swift */; };
 		CB6FCEF3256532A800CC03C0 /* RequestSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB6FCEF1256532A800CC03C0 /* RequestSummaryCell.xib */; };
 		CB6FCEF92565372100CC03C0 /* RequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FCEF72565372100CC03C0 /* RequestDetailViewController.swift */; };
@@ -59,6 +60,7 @@
 		CB53B08825654DF00019DF5E /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		CB53B08C2565530B0019DF5E /* RequestItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestItem.swift; sourceTree = "<group>"; };
 		CB53B090256554AB0019DF5E /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		CB53B0D72566407B0019DF5E /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		CB6FCEF0256532A800CC03C0 /* RequestSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSummaryCell.swift; sourceTree = "<group>"; };
 		CB6FCEF1256532A800CC03C0 /* RequestSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestSummaryCell.xib; sourceTree = "<group>"; };
 		CB6FCEF72565372100CC03C0 /* RequestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				CB53B08C2565530B0019DF5E /* RequestItem.swift */,
 				CB53B090256554AB0019DF5E /* Request.swift */,
+				CB53B0D72566407B0019DF5E /* ItemCategory.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				CB53B08D2565530B0019DF5E /* RequestItem.swift in Sources */,
 				CBABBD24255BB2C70092A0D5 /* LoginViewController.swift in Sources */,
 				CBAAEC86255CCB8600621139 /* MoreInfoViewController.swift in Sources */,
+				CB53B0D82566407B0019DF5E /* ItemCategory.swift in Sources */,
 				CBCC9CC92564B60B0002F61D /* NewItemCell.swift in Sources */,
 				CB6FCEF2256532A800CC03C0 /* RequestSummaryCell.swift in Sources */,
 				CB10E186256110A6009BE2A5 /* UIViewShadowExtension.swift in Sources */,
@@ -648,7 +652,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7K6ZTDFM48;
 				INFOPLIST_FILE = Kasei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -670,7 +674,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7K6ZTDFM48;
 				INFOPLIST_FILE = Kasei/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -62,7 +62,7 @@ func getAllItems(DBRef: DatabaseReference, forContentSnapshot snap: DataSnapshot
         let childSnap = child as! DataSnapshot
         let itemID = childSnap.key
         getRequestItem(DBRef: DBRef, forID: itemID) { (item) in
-            if var i = item {
+            if let i = item {
                 i.qty = childSnap.value as! Int
                 items.append(i)
             }

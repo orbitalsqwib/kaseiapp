@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class CategoriesViewController: CardDetailVC, UITableViewDelegate, UITableViewDataSource, RequestItemCellProtocol {
     
     var delegateCarrier: RequestItemHandler?
     var itemsCarrier: [RequestItem]?
+    var categories: [ItemCategory]?
+    
+    let DBRef = Database.database().reference()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +25,20 @@ class CategoriesViewController: CardDetailVC, UITableViewDelegate, UITableViewDa
         cardTableView.delegate = self
         cardTableView.dataSource = self
         RequestItemCell.register(for: cardTableView)
+        
+        getItemCategories(DBRef: DBRef, onComplete: { (categories) in
+            self.categories = categories
+            self.cardTableView.reloadData()
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return categories?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = RequestItemCell.buildInstance(for: cardTableView, delegate: self, title: "Dairy", icon: "") {
+        let category = categories![indexPath.row]
+        if let cell = RequestItemCell.buildInstance(for: cardTableView, delegate: self, title: category.category, icon: category.icon) {
             cell.disableCounter()
             cell.enableTapper()
             return cell
@@ -40,11 +50,15 @@ class CategoriesViewController: CardDetailVC, UITableViewDelegate, UITableViewDa
     func plusClicked(for cell: RequestItemCell) { }
     func minusClicked(for cell: RequestItemCell) { }
     func cellTapped(for cell: RequestItemCell) {
-        let itemsVC = ItemsViewController(nibName: "CardDetailVC", bundle: nil)
-        itemsVC.titleText = "Dairy"
-        itemsVC.delegate = delegateCarrier
-        itemsVC.basketItems = itemsCarrier
-        present(itemsVC, animated: true, completion: nil)
+        if let indexPath = cardTableView.indexPath(for: cell) {
+            let category = categories![indexPath.row]
+            let itemsVC = ItemsViewController(nibName: "CardDetailVC", bundle: nil)
+            itemsVC.titleText = category.category
+            itemsVC.itemIDs = category.itemIDs
+            itemsVC.delegate = delegateCarrier
+            itemsVC.basketItems = itemsCarrier ?? []
+            present(itemsVC, animated: true, completion: nil)
+        }
     }
 
     /*

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="checkoutDetailCell" id="qoK-5e-yKW" customClass="CheckoutDetailCell" customModule="Kasei" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="445" height="614"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qoK-5e-yKW" id="4KZ-Gf-Kzb">
+                <rect key="frame" x="0.0" y="0.0" width="445" height="614"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKJ-nx-mbk">
+                        <rect key="frame" x="20" y="27" width="405" height="400"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Preferred Delivery Slot:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YB-dn-gcn">
+                                <rect key="frame" x="16" y="16" width="373" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="fdg-XD-ORu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                <color key="textColor" name="Text"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="57F-Uw-QAm">
+                                <rect key="frame" x="42.5" y="64" width="320" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="bLF-Ln-ra4"/>
+                                </constraints>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Preferred Delivery Slot:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZD-Ym-vhH">
+                                <rect key="frame" x="16" y="208" width="373" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="yiT-1m-Bmu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                                <color key="textColor" name="Text"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="VW7-DI-ZBG">
+                                <rect key="frame" x="42.5" y="256" width="320" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="xWK-PC-55F"/>
+                                </constraints>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" name="Background Elevated"/>
+                        <constraints>
+                            <constraint firstItem="57F-Uw-QAm" firstAttribute="centerX" secondItem="OKJ-nx-mbk" secondAttribute="centerX" id="08b-3z-G9L"/>
+                            <constraint firstAttribute="bottom" secondItem="VW7-DI-ZBG" secondAttribute="bottom" constant="16" id="5Tg-Mt-AKR"/>
+                            <constraint firstItem="iZD-Ym-vhH" firstAttribute="top" secondItem="57F-Uw-QAm" secondAttribute="bottom" constant="16" id="F7I-A3-Hqb"/>
+                            <constraint firstItem="1YB-dn-gcn" firstAttribute="top" secondItem="OKJ-nx-mbk" secondAttribute="top" constant="16" id="JQV-Ss-Ztg"/>
+                            <constraint firstItem="iZD-Ym-vhH" firstAttribute="leading" secondItem="OKJ-nx-mbk" secondAttribute="leading" constant="16" id="NHH-fQ-4KB"/>
+                            <constraint firstItem="1YB-dn-gcn" firstAttribute="leading" secondItem="OKJ-nx-mbk" secondAttribute="leading" constant="16" id="U1F-P0-w1l"/>
+                            <constraint firstAttribute="trailing" secondItem="1YB-dn-gcn" secondAttribute="trailing" constant="16" id="XYC-Xd-Sdg"/>
+                            <constraint firstAttribute="trailing" secondItem="iZD-Ym-vhH" secondAttribute="trailing" constant="16" id="f26-B3-OlH"/>
+                            <constraint firstItem="VW7-DI-ZBG" firstAttribute="centerX" secondItem="OKJ-nx-mbk" secondAttribute="centerX" id="fxf-4L-ezb"/>
+                            <constraint firstItem="57F-Uw-QAm" firstAttribute="top" secondItem="1YB-dn-gcn" secondAttribute="bottom" constant="16" id="xsI-0s-P15"/>
+                            <constraint firstItem="VW7-DI-ZBG" firstAttribute="top" secondItem="iZD-Ym-vhH" secondAttribute="bottom" constant="16" id="ynE-79-XIw"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="OKJ-nx-mbk" secondAttribute="trailing" id="eGc-D6-K8l"/>
+                    <constraint firstItem="OKJ-nx-mbk" firstAttribute="top" secondItem="4KZ-Gf-Kzb" secondAttribute="topMargin" constant="16" id="hbv-xk-bui"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="OKJ-nx-mbk" secondAttribute="bottom" priority="750" constant="16" id="iYl-ce-bn2"/>
+                    <constraint firstItem="OKJ-nx-mbk" firstAttribute="leading" secondItem="4KZ-Gf-Kzb" secondAttribute="leadingMargin" id="n8u-dk-Th6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="lzQ-xM-W2O"/>
+            <connections>
+                <outlet property="datePicker" destination="57F-Uw-QAm" id="kvx-cg-NCG"/>
+                <outlet property="detailContainer" destination="OKJ-nx-mbk" id="0mB-hV-BD7"/>
+                <outlet property="slotPicker" destination="VW7-DI-ZBG" id="cwg-Ce-OGj"/>
+            </connections>
+            <point key="canvasLocation" x="318.11594202898556" y="208.25892857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Background Elevated">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

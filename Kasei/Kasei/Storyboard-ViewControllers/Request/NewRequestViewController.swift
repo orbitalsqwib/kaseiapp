@@ -91,9 +91,6 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
         self.present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func clickedCheckout(_ sender: Any) {
-    }
-    
     func cancelNewRequest() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -136,20 +133,22 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
     func updateItemCount(item: RequestItem, newCount: Int) {
         guard let index = newRequest?.items.firstIndex(where: {$0.name == item.name}) else { return
         }
-        let cell = requestItemsTableView.cellForRow(at: .init(row: index, section: 1)) as! RequestItemCell
-        cell.count = newCount
-        newRequest!.items.first(where: {$0.name == item.name})?.qty = newCount
+        if let cell = requestItemsTableView.cellForRow(at: .init(row: index, section: 1)) as? RequestItemCell {
+            cell.count = newCount
+            newRequest!.items.first(where: {$0.name == item.name})?.qty = newCount
+        }
     }
-
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.destination is CheckoutViewController {
+            let destVC = segue.destination as? CheckoutViewController
+            destVC?.request = newRequest
+        }
     }
-    */
+
 
 }
 

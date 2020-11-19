@@ -29,6 +29,25 @@ struct Request: Codable {
     }
 }
 
+func postRequest(DBRef: DatabaseReference, req: Request) {
+    let authHandler = FirAuthHandler.self
+    guard let uid = authHandler.firAuth.currentUser?.uid else {
+        return
+    }
+    
+    var items = [String : Int]()
+    for itm in req.items {
+        items[itm.id] = itm.qty
+    }
+    
+    let now = Calendar.current.dateComponents(in: .current, from: Date())
+    let tmr = DateComponents(year: now.year, month: now.month, day: now.day, hour: 8)
+    let defaultSlot = Calendar.current.date(from: tmr)!.timeIntervalSince1970
+    let delSlotStart = Int64((req.delSlotStart?.timeIntervalSince1970 ?? defaultSlot * 1000).rounded())
+    
+    DBRef.child("TESTREQUESTS").childByAutoId().setValue(["content": items, "delSlotStart" : delSlotStart, "senderID" : req.senderID, "status" : req.status ?? ""])
+}
+
 func getRequest(DBRef: DatabaseReference, forID id: String, onComplete: @escaping (Request?) -> ()) {
     DBRef.child("requests/\(id)").observeSingleEvent(of: .value) { (snapshot) in
         guard let senderID = snapshot.childSnapshot(forPath: "senderID").value as? String else {

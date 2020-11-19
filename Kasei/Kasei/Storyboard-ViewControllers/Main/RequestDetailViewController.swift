@@ -20,7 +20,7 @@ class RequestDetailViewController: CardDetailVC, UITableViewDelegate, UITableVie
         cardTableView.delegate = self
         cardTableView.dataSource = self
         RequestDetailsCell.register(for: cardTableView)
-        HeaderCell.register(withReuseId: "contentHeaderCell", for: cardTableView)
+        HeaderCell.register(for: cardTableView)
         RequestItemCell.register(for: cardTableView)
     }
     
@@ -52,7 +52,7 @@ class RequestDetailViewController: CardDetailVC, UITableViewDelegate, UITableVie
                 return UITableViewCell()
             }
         case 1:
-            return HeaderCell.buildInstance(withReuseId: "contentHeaderCell", for: cardTableView, header: "Contents:") ?? UITableViewCell()
+            return HeaderCell.buildInstance(for: cardTableView, header: "Contents:") ?? UITableViewCell()
         case 2:
             let item = request!.items[indexPath.row]
             if let cell = RequestItemCell.buildInstance(for: cardTableView, delegate: nil, title: item.name, icon: item.icon) {

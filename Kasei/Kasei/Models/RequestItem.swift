@@ -9,12 +9,14 @@ import Foundation
 import FirebaseDatabase
 
 class RequestItem: Codable {
+    var id: String
     var name: String
     var icon: String
     var qty: Int
     var bgCol: String
     
-    init(name: String, icon: String, qty: Int, bgCol: String) {
+    init(id: String, name: String, icon: String, qty: Int, bgCol: String) {
+        self.id = id
         self.name = name
         self.icon = icon
         self.qty = qty
@@ -39,6 +41,6 @@ func getRequestItem(DBRef: DatabaseReference, forID id: String, onComplete: @esc
             return
         }
         
-        onComplete(RequestItem(name: name, icon: icon, qty: 0, bgCol: bgCol))
+        onComplete(RequestItem(id: id, name: name, icon: icon, qty: 0, bgCol: bgCol))
     }
 }

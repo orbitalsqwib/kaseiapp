@@ -17,12 +17,12 @@ class HeaderCell: UITableViewCell {
         headerContainer.layer.cornerRadius = 10
     }
     
-    static func register(withReuseId id: String, for tableView: UITableView) {
-        tableView.register(UINib(nibName: "HeaderCell", bundle: nil), forCellReuseIdentifier: id)
+    static func register(for tableView: UITableView) {
+        tableView.register(UINib(nibName: "HeaderCell", bundle: nil), forCellReuseIdentifier: "headerCell")
     }
     
-    static func buildInstance(withReuseId id: String, for tableView: UITableView, header: String) -> HeaderCell? {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: id) as? HeaderCell else {
+    static func buildInstance(for tableView: UITableView, header: String) -> HeaderCell? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as? HeaderCell else {
             return nil
         }
         

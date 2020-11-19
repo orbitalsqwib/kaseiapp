@@ -89,7 +89,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 for item in request.items {
                     summaryStrings.append("\(item.qty) \(item.name)")
                 }
-                let summary = summaryStrings.joined(separator: ",")
+                let summary = summaryStrings.joined(separator: ", ")
                 cell.contentSummary.text = summary
                 
                 return cell

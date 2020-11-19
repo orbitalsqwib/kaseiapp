@@ -200,7 +200,7 @@
                                                     <constraint firstAttribute="width" secondItem="3wR-7u-Lzb" secondAttribute="height" multiplier="1:1" id="Ld0-jh-p0L"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPA-cs-Pv3">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Success!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPA-cs-Pv3">
                                                 <rect key="frame" x="84" y="245" width="142" height="49.5"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="36"/>
                                                 <nil key="textColor"/>
@@ -286,9 +286,9 @@
         <!--Main-->
         <scene sceneID="1Ge-1N-4nY">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="f1i-4w-EQ5" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MuJ-7t-kmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="r7c-UO-gGc" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MuJ-7t-kmh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" id="f1i-4w-EQ5" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="1214" y="-290"/>
         </scene>

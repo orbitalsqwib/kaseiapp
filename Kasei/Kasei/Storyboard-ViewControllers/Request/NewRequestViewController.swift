@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewRequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewItemCellProtocol, RequestItemCellProtocol {
+class NewRequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewItemCellProtocol, RequestItemCellProtocol, RequestItemHandler {
 
     @IBOutlet weak var requestItemsTableView: UITableView!
     
@@ -39,7 +39,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
         case 0:
             return 1
         case 1:
-            return 1
+            return newRequest?.items.count ?? 0
         default:
             return 0
         }
@@ -50,8 +50,13 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
         case 0:
             return NewItemCell.buildInstance(for: requestItemsTableView, delegate: self, title: "Add Item") ?? UITableViewCell()
         case 1:
-            if let cell = RequestItemCell.buildInstance(for: requestItemsTableView, delegate: self, title: "Test", icon: "") {
+            guard let item = newRequest?.items[indexPath.row] else {
+                return UITableViewCell()
+            }
+            
+            if let cell = RequestItemCell.buildInstance(for: requestItemsTableView, delegate: self, title: item.name, icon: item.icon) {
                 cell.disableModifierBtns()
+                cell.count = item.qty
                 return cell
             } else {
                 return UITableViewCell()
@@ -77,7 +82,10 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func newItem() {
-        present(CategoriesViewController(nibName: "CardDetailVC", bundle: nil), animated: true, completion: nil)
+        let catVC = CategoriesViewController(nibName: "CardDetailVC", bundle: nil)
+        catVC.delegateCarrier = self
+        catVC.itemsCarrier = newRequest?.items
+        present(catVC, animated: true, completion: nil)
     }
     
     func plusClicked(for cell: RequestItemCell) {
@@ -90,6 +98,23 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func cellTapped(for cell: RequestItemCell) {
         //code
+    }
+    
+    func addItem(item: RequestItem) {
+        newRequest?.items.append(item)
+        requestItemsTableView.reloadSections(.init(arrayLiteral: 1), with: .fade)
+    }
+    
+    func removeItem(item: RequestItem) {
+        newRequest!.items.removeAll { (requestItem) -> Bool in
+            requestItem.name == item.name
+        }
+    }
+    
+    func updateItemCount(item: RequestItem, newCount: Int) {
+        let index = newRequest?.items.firstIndex(where: {$0.name == item.name})
+        newRequest!.items.first(where: {$0.name == item.name})?.qty = newCount
+        requestItemsTableView.reloadRows(at: [IndexPath(row: index!, section: 1)], with: .fade)
     }
 
     /*
@@ -106,5 +131,6 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
 
 protocol RequestItemHandler {
     func addItem(item: RequestItem)
-    func updateItemCount(index: Int)
+    func removeItem(item: RequestItem)
+    func updateItemCount(item: RequestItem, newCount: Int)
 }

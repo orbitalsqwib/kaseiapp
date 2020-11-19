@@ -9,6 +9,8 @@ import UIKit
 
 class RequestDetailViewController: CardDetailVC, UITableViewDelegate, UITableViewDataSource {
 
+    var request: Request?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +21,7 @@ class RequestDetailViewController: CardDetailVC, UITableViewDelegate, UITableVie
         cardTableView.dataSource = self
         RequestDetailsCell.register(for: cardTableView)
         HeaderCell.register(withReuseId: "contentHeaderCell", for: cardTableView)
+        RequestItemCell.register(for: cardTableView)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,8 +34,8 @@ class RequestDetailViewController: CardDetailVC, UITableViewDelegate, UITableVie
             return 1
         case 1:
             return 1
-        case 3:
-            return 0
+        case 2:
+            return request!.items.count
         default:
             return 0
         }
@@ -42,12 +45,23 @@ class RequestDetailViewController: CardDetailVC, UITableViewDelegate, UITableVie
         switch indexPath.section {
         case 0:
             if let cell = RequestDetailsCell.buildInstance(for: cardTableView) {
+                cell.statusLabel.text = request?.status
+                cell.deliverySlotLabel.text = request?.delSlotString()
                 return cell
             } else {
                 return UITableViewCell()
             }
         case 1:
-            return HeaderCell.buildInstance(withReuseId: "contentHeaderCell", for: cardTableView, header: "Content") ?? UITableViewCell()
+            return HeaderCell.buildInstance(withReuseId: "contentHeaderCell", for: cardTableView, header: "Contents:") ?? UITableViewCell()
+        case 2:
+            let item = request!.items[indexPath.row]
+            if let cell = RequestItemCell.buildInstance(for: cardTableView, delegate: nil, title: item.name, icon: item.icon) {
+                cell.disableModifierBtns()
+                cell.count = item.qty
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         default:
             return UITableViewCell()
         }

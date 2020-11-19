@@ -6,9 +6,39 @@
 //
 
 import Foundation
+import FirebaseDatabase
 
-struct RequestItem: Codable {
+class RequestItem: Codable {
     var name: String
     var icon: String
     var qty: Int
+    var bgCol: String
+    
+    init(name: String, icon: String, qty: Int, bgCol: String) {
+        self.name = name
+        self.icon = icon
+        self.qty = qty
+        self.bgCol = bgCol
+    }
+}
+
+func getRequestItem(DBRef: DatabaseReference, forID id: String, onComplete: @escaping (RequestItem?) -> ()) {
+    DBRef.child("items/\(id)").observeSingleEvent(of: .value) { (snapshot) in
+        guard let name = snapshot.childSnapshot(forPath: "name").value as? String else {
+            onComplete(nil)
+            return
+        }
+        
+        guard let icon = snapshot.childSnapshot(forPath: "icon").value as? String else {
+            onComplete(nil)
+            return
+        }
+        
+        guard let bgCol = snapshot.childSnapshot(forPath: "bgCol").value as? String else {
+            onComplete(nil)
+            return
+        }
+        
+        onComplete(RequestItem(name: name, icon: icon, qty: 0, bgCol: bgCol))
+    }
 }

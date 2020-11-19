@@ -7,15 +7,12 @@
 
 import UIKit
 
-class HeaderCell: ElevatedTableViewCell {
+class HeaderCell: UITableViewCell {
 
     @IBOutlet weak var headerContainer: UIView!
     @IBOutlet weak var headerLabel: UILabel!
     
     override func awakeFromNib() {
-        //Pre-initialization code
-        containerView = headerContainer
-        
         super.awakeFromNib()
         headerContainer.layer.cornerRadius = 10
     }

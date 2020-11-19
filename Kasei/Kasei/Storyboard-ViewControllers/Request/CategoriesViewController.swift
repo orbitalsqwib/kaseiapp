@@ -8,6 +8,9 @@
 import UIKit
 
 class CategoriesViewController: CardDetailVC, UITableViewDelegate, UITableViewDataSource, RequestItemCellProtocol {
+    
+    var delegateCarrier: RequestItemHandler?
+    var itemsCarrier: [RequestItem]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +42,8 @@ class CategoriesViewController: CardDetailVC, UITableViewDelegate, UITableViewDa
     func cellTapped(for cell: RequestItemCell) {
         let itemsVC = ItemsViewController(nibName: "CardDetailVC", bundle: nil)
         itemsVC.titleText = "Dairy"
+        itemsVC.delegate = delegateCarrier
+        itemsVC.basketItems = itemsCarrier
         present(itemsVC, animated: true, completion: nil)
     }
 

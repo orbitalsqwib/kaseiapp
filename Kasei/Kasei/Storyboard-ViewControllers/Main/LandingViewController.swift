@@ -42,23 +42,17 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         DBRef.child("userRequests/\(uid)").observe(.value) { (snapshot) in
-            if snapshot.exists() {
-                var requests = Array<Request>()
-                for child in snapshot.children {
-                    let childSnapshot = child as! DataSnapshot
-                    self.fetchRequest(for: childSnapshot.value as! String) { (request) in
-                        requests.append(request)
+            var counter = snapshot.childrenCount
+            for child in snapshot.children {
+                let childSnap = child as! DataSnapshot
+                let id = childSnap.value as! String
+                getRequest(DBRef: self.DBRef, forID: id) { (r) in
+                    if r != nil { self.userRequests.append(r!) }
+                    counter -= 1
+                    if counter == 0 {
+                        self.requestTableView.reloadSections(.init(arrayLiteral: 1), with: .fade)
                     }
                 }
-                onComplete(requests)
-            }
-        }
-    }
-    
-    func fetchRequest(for id: String, onComplete: (Request) -> ()) {
-        DBRef.child("requests/\(id)").observe(.value) { (snapshot) in
-            if snapshot.exists() {
-                // decode to request
             }
         }
     }
@@ -83,7 +77,23 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 0:
             return NewItemCell.buildInstance(for: requestTableView, delegate: self, title: "New Request") ?? UITableViewCell()
         case 1:
-            return RequestSummaryCell.buildInstance(for: requestTableView, delegate: self) ?? UITableViewCell()
+            let request = userRequests[indexPath.row]
+            if let cell = RequestSummaryCell.buildInstance(for: requestTableView, delegate: self) {
+                cell.statusLabel.text = request.status
+                cell.deliverySlotLabel.text = request.delSlotString()
+                
+                // format contents
+                var summaryStrings = [String]()
+                for item in request.items {
+                    summaryStrings.append("\(item.qty) \(item.name)")
+                }
+                let summary = summaryStrings.joined(separator: ",")
+                cell.contentSummary.text = summary
+                
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         default:
             return UITableViewCell()
         }
@@ -103,10 +113,13 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func presentDetailView(for cell: RequestSummaryCell) {
-        let indexPath = requestTableView.indexPath(for: cell)
-        let detailVC = RequestDetailViewController(nibName: "CardDetailVC", bundle: nil)
-        //TODO: Make a model, get data, pass data into detail vc, etc...
-        present(detailVC, animated: true, completion: nil)
+        if let indexPath = requestTableView.indexPath(for: cell) {
+            let detailVC = RequestDetailViewController(nibName: "CardDetailVC", bundle: nil)
+            detailVC.request = userRequests[indexPath.row]
+            present(detailVC, animated: true, completion: nil)
+        } else {
+            print("There was an error!")
+        }
     }
     
     func newItem() {

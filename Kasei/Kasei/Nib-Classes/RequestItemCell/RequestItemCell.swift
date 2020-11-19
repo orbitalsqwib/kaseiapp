@@ -72,8 +72,10 @@ class RequestItemCell: ElevatedTableViewCell {
     }
     
     func disableModifierBtns() {
-        minusContainer.removeFromSuperview()
-        plusContainer.removeFromSuperview()
+        if minusContainer != nil && plusContainer != nil {
+            minusContainer.removeFromSuperview()
+            plusContainer.removeFromSuperview()
+        }
     }
     
     func disableCounter() {

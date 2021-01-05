@@ -26,7 +26,17 @@ func getItemCategories(DBRef: DatabaseReference, onComplete: @escaping ([ItemCat
         for categoryChild in snapshot.children {
             let categorySnap = categoryChild as! DataSnapshot
             
-            guard let category = categorySnap.childSnapshot(forPath: "category").value as? String else {
+            var path = "category"
+            
+            switch Locale.current.languageCode {
+            case "zh":
+                path += "_zh"
+                break;
+            default:
+                break;
+            }
+            
+            guard let category = categorySnap.childSnapshot(forPath: path).value as? String else {
                 continue
             }
             

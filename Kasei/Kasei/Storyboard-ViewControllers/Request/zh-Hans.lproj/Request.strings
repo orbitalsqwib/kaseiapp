@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Checkout"; ObjectID = "DtH-eZ-ixI"; */
+"DtH-eZ-ixI.text" = "查看";
+
+/* Class = "UILabel"; text = "Success!"; ObjectID = "MPA-cs-Pv3"; */
+"MPA-cs-Pv3.text" = "成功！";
+
+/* Class = "UIButton"; normalTitle = "Confirm & Send"; ObjectID = "TIi-wM-1lq"; */
+"TIi-wM-1lq.normalTitle" = "确认并发送";
+
+/* Class = "UINavigationItem"; title = "New Request"; ObjectID = "eBR-to-MVg"; */
+"eBR-to-MVg.title" = "新要求";
+
+/* Class = "UIButton"; normalTitle = "Checkout"; ObjectID = "kGY-UD-c4m"; */
+"kGY-UD-c4m.normalTitle" = "查看";

@@ -1,0 +1,19 @@
+
+/* Class = "UILabel"; text = "22/12/20, 2pm - 4pm"; ObjectID = "CYW-bX-jPi"; */
+"CYW-bX-jPi.text" = "22/12/20, 2pm - 4pm";
+
+/* Class = "UILabel"; text = "Preferred Delivery Slot:"; ObjectID = "YrL-vy-gUO"; */
+"YrL-vy-gUO.text" = "首选交货位置：";
+
+/* Class = "UIButton"; normalTitle = "More Details →"; ObjectID = "Zfe-rh-bOX"; */
+"Zfe-rh-bOX.normalTitle" = "更多细节 →";
+
+/* Class = "UILabel"; text = "Request Sent"; ObjectID = "dhd-oP-KIx"; */
+"dhd-oP-KIx.text" = "请求发送";
+
+/* Class = "UILabel"; text = "12 Eggs, 2 Lettuce, 2 Cabbage, 2 Bok Choi, 13 Pizza"; ObjectID = "hov-DW-OuI"; */
+"hov-DW-OuI.text" = "12 Eggs, 2 Lettuce, 2 Cabbage, 2 Bok Choi, 13 Pizza";
+
+/* Class = "UILabel"; text = "Contents:"; ObjectID = "ja8-PK-WZv"; */
+"ja8-PK-WZv.text" = "内容：";
+

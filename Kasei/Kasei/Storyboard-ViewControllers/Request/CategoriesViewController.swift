@@ -20,7 +20,7 @@ class CategoriesViewController: CardDetailVC, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        cardTitle.text = "Categories"
+        cardTitle.text = NSLocalizedString("Categories", comment: "")
         
         cardTableView.delegate = self
         cardTableView.dataSource = self

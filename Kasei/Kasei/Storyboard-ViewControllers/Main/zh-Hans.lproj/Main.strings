@@ -1,0 +1,9 @@
+
+/* Class = "UIViewController"; title = "LandingViewController"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "LandingViewController";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "Gpx-Xe-PaD"; */
+"Gpx-Xe-PaD.title" = "项目";
+
+/* Class = "UINavigationItem"; title = "Requests"; ObjectID = "Ylw-rs-V7y"; */
+"Ylw-rs-V7y.title" = "要求";

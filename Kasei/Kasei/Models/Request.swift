@@ -9,10 +9,21 @@ import Foundation
 import FirebaseDatabase
 
 struct Request: Codable {
+    var id: String?
+    var dateCreated: Date?
     var senderID: String
     var status: String?
     var delSlotStart: Date?
     var items: Array<RequestItem>
+    
+    init(id: String?, dateCreated: Date?, senderID: String, status: String?, delSlotStart: Date?, items: Array<RequestItem>) {
+        self.id = id
+        self.dateCreated = dateCreated
+        self.senderID = senderID
+        self.status = status
+        self.delSlotStart = delSlotStart
+        self.items = items
+    }
     
     func delSlotString() -> String? {
         // format date
@@ -45,7 +56,7 @@ func postRequest(DBRef: DatabaseReference, req: Request, onComplete: @escaping (
     let defaultSlot = Calendar.current.date(from: tmr)!.timeIntervalSince1970
     let delSlotStart = Int64((req.delSlotStart?.timeIntervalSince1970 ?? defaultSlot * 1000).rounded()) * 1000
     
-    let reqDict = ["content": items, "delSlotStart" : delSlotStart, "senderID" : req.senderID, "status" : req.status ?? ""] as [String : Any]
+    let reqDict = ["dateCreated": Date().timeIntervalSince1970, "content": items, "delSlotStart" : delSlotStart, "senderID" : req.senderID, "status" : req.status ?? ""] as [String : Any]
     
     let reqID = DBRef.child("requests").childByAutoId()
     reqID.setValue(reqDict) { (err, _) in
@@ -61,6 +72,15 @@ func postRequest(DBRef: DatabaseReference, req: Request, onComplete: @escaping (
 
 func getRequest(DBRef: DatabaseReference, forID id: String, onComplete: @escaping (Request?) -> ()) {
     DBRef.child("requests/\(id)").observeSingleEvent(of: .value) { (snapshot) in
+        let id = snapshot.key
+        
+        guard let dateCreatedSeconds = snapshot.childSnapshot(forPath: "dateCreated").value as? Double else {
+            onComplete(nil)
+            return
+        }
+        
+        let dateCreated = Date(timeIntervalSince1970: dateCreatedSeconds)
+        
         guard let senderID = snapshot.childSnapshot(forPath: "senderID").value as? String else {
             onComplete(nil)
             return
@@ -80,7 +100,7 @@ func getRequest(DBRef: DatabaseReference, forID id: String, onComplete: @escapin
         
         let contentSnap = snapshot.childSnapshot(forPath: "content")
         getAllItems(DBRef: DBRef, forContentSnapshot: contentSnap) { (items) in
-            onComplete(Request(senderID: senderID, status: status, delSlotStart: delSlotStartDate, items: items))
+            onComplete(Request(id: id, dateCreated: dateCreated, senderID: senderID, status: status, delSlotStart: delSlotStartDate, items: items))
         }
     }
 }

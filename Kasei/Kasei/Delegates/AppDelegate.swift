@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 import Firebase
 
 @main
@@ -16,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // initialise firebase
         FirebaseApp.configure()
+        
+        // first time app launch config
+        let defaults = UserDefaults.standard
+        if !defaults.bool(forKey: "firstLaunch") {
+            defaults.setValue(true, forKey: "firstLaunch")
+            defaults.setValue(Locale.current.languageCode, forKey: "currLocale")
+        }
         
         return true
     }
@@ -34,6 +42,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    // Core Data stack
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Kasei")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    // Core Data Saving support
+    func saveContext() {
+        let context = persistentContainer.viewContext
+        do {
+            try context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
 
 }
 

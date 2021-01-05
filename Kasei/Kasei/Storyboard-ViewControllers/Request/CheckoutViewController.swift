@@ -65,11 +65,11 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            return HeaderCell.buildInstance(for: checkoutTableView, header: "Select a time for delivery: ") ?? UITableViewCell()
+            return HeaderCell.buildInstance(for: checkoutTableView, header: NSLocalizedString("Select a time for delivery: ", comment: "")) ?? UITableViewCell()
         case 1:
             return CheckoutDetailCell.buildInstance(for: checkoutTableView) ?? UITableViewCell()
         case 2:
-            return HeaderCell.buildInstance(for: checkoutTableView, header: "Review your items: ") ?? UITableViewCell()
+            return HeaderCell.buildInstance(for: checkoutTableView, header: NSLocalizedString("Review your items: ", comment: "")) ?? UITableViewCell()
         case 3:
             let item = request!.items[indexPath.row]
             if let cell = RequestItemCell.buildInstance(for: checkoutTableView, delegate: nil, title: item.name, icon: item.icon) {
@@ -94,7 +94,7 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         request?.delSlotStart = detailCell.getStartDelSlot()
-        request?.status = "Request Sent"
+        request?.status = NSLocalizedString("Request Sent", comment: "")
         
         let DBRef = Database.database().reference()
         
@@ -118,19 +118,19 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
     func showResultCard() {
         resultCardContainer.isHidden = false
         resultLoadIndicator.startAnimating()
-        resultCardText.text = "Sending..."
+        resultCardText.text = NSLocalizedString("Sending...", comment: "")
     }
     
     func resultDisplaySuccess() {
         resultCardIcon.image = UIImage(systemName: "checkmark.circle.fill")
         resultCardIcon.tintColor = UIColor(named: "Accent Static")
-        resultCardText.text = "Success!"
+        resultCardText.text = NSLocalizedString("Success!", comment: "")
     }
     
     func resultDisplayFailure() {
         resultCardIcon.image = UIImage(systemName: "xmark.circle.fill")
         resultCardIcon.tintColor = UIColor(named: "Destructive")
-        resultCardText.text = "Something went wrong!"
+        resultCardText.text = NSLocalizedString("Something went wrong!", comment: "")
     }
     
     func returnToMain() {

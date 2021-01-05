@@ -15,7 +15,7 @@ class RequestDetailViewController: CardDetailVC, UITableViewDelegate, UITableVie
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        cardTitle.text = "Details"
+        cardTitle.text = NSLocalizedString("Details", comment: "")
         
         cardTableView.delegate = self
         cardTableView.dataSource = self
@@ -52,7 +52,7 @@ class RequestDetailViewController: CardDetailVC, UITableViewDelegate, UITableVie
                 return UITableViewCell()
             }
         case 1:
-            return HeaderCell.buildInstance(for: cardTableView, header: "Contents:") ?? UITableViewCell()
+            return HeaderCell.buildInstance(for: cardTableView, header: NSLocalizedString("Contents:", comment: "")) ?? UITableViewCell()
         case 2:
             let item = request!.items[indexPath.row]
             if let cell = RequestItemCell.buildInstance(for: cardTableView, delegate: nil, title: item.name, icon: item.icon) {

@@ -35,7 +35,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
         
         // create new request
         if let uid = authHandler.firAuth.currentUser?.uid {
-            newRequest = Request(senderID: uid, status: nil, delSlotStart: nil, items: [])
+            newRequest = Request(id: nil, dateCreated: nil, senderID: uid, status: nil, delSlotStart: nil, items: [])
         }
     }
     
@@ -65,7 +65,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            return NewItemCell.buildInstance(for: requestItemsTableView, delegate: self, title: "Add Item") ?? UITableViewCell()
+            return NewItemCell.buildInstance(for: requestItemsTableView, delegate: self, title: NSLocalizedString("Add Item", comment: "")) ?? UITableViewCell()
         case 1:
             guard let item = newRequest?.items[indexPath.row] else {
                 return UITableViewCell()
@@ -83,9 +83,9 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func clickedCancel(_ sender: Any) {
-        let alert = UIAlertController(title: "Cancel new request?", message: "Your current request will be discarded.", preferredStyle: .alert)
-        alert.addAction(.init(title: "Don't Cancel", style: .cancel, handler: nil))
-        alert.addAction(.init(title: "Confirm", style: .destructive, handler: { (alert) in
+        let alert = UIAlertController(title: NSLocalizedString("Cancel new request?", comment: ""), message: NSLocalizedString("Your current request will be discarded.", comment: ""), preferredStyle: .alert)
+        alert.addAction(.init(title: NSLocalizedString("Don't Cancel", comment: ""), style: .cancel, handler: nil))
+        alert.addAction(.init(title: NSLocalizedString("Confirm", comment: ""), style: .destructive, handler: { (alert) in
             self.cancelNewRequest()
         }))
         self.present(alert, animated: true, completion: nil)

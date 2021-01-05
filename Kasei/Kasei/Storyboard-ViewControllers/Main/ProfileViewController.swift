@@ -15,7 +15,7 @@ class ProfileViewController: CardDetailVC, UITableViewDelegate, UITableViewDataS
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        cardTitle.text = "Profile"
+        cardTitle.text = NSLocalizedString("Profile", comment: "")
         
         cardTableView.delegate = self
         cardTableView.dataSource = self
@@ -50,7 +50,7 @@ class ProfileViewController: CardDetailVC, UITableViewDelegate, UITableViewDataS
             if let cell = ButtonCell.buildInstance(withReuseId: "signOutCell", for: cardTableView, delegate: self) {
                 cell.btn.backgroundColor = UIColor(named: "Destructive")
                 cell.btn.setTitleColor(UIColor(named: "Destructive Text"), for: .normal)
-                cell.btn.setTitle("Sign Out", for: .normal)
+                cell.btn.setTitle(NSLocalizedString("Sign Out", comment: ""), for: .normal)
                 return cell
             } else {
                 return UITableViewCell()

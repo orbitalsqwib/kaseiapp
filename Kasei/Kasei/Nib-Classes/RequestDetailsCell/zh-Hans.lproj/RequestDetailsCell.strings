@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Status:"; ObjectID = "c7y-Bh-60a"; */
+"c7y-Bh-60a.text" = "状态：";
+
+/* Class = "UILabel"; text = "Fetching Data..."; ObjectID = "gjc-Ko-AxD"; */
+"gjc-Ko-AxD.text" = "正在获取数据...";
+
+/* Class = "UILabel"; text = "Fetching Data..."; ObjectID = "r9S-mg-bhm"; */
+"r9S-mg-bhm.text" = "正在获取数据...";
+
+/* Class = "UILabel"; text = "Delivers On:"; ObjectID = "x0o-kd-kR7"; */
+"x0o-kd-kR7.text" = "提供：";

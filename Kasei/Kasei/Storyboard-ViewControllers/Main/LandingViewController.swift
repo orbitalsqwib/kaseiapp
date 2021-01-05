@@ -11,6 +11,7 @@ import FirebaseDatabase
 class LandingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewItemCellProtocol, RequestSummaryCellProtocol {
 
     @IBOutlet weak var requestTableView: UITableView!
+    let refreshControl = UIRefreshControl()
     
     var userRequests = Array<Request>()
     
@@ -23,14 +24,41 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
         requestTableView.delegate = self
         requestTableView.dataSource = self
+
+        requestTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(objcRefreshData(_:)), for: .valueChanged)
+        
         NewItemCell.register(for: requestTableView)
         RequestSummaryCell.register(for: requestTableView)
         
+        // Preload saved requests from core data
+        userRequests = CDHandler.loadAllRequests()
+        requestTableView.reloadData()
+        
+        // Then attempt to update from server
+        refreshData()
+    }
+    
+    @objc private func objcRefreshData(_ sender: Any) {
+        refreshData()
+    }
+    
+    func refreshData() {
+        
         fetchAllUserRequests { (requests) in
             if requests != nil {
-                self.userRequests = requests!
+                // update saved requests
+                CDHandler.updateSavedRequests(newRequests: requests!)
+                
+                // reload saved requests and piggyback on CDHandler to sort by dateCreated
+                self.userRequests = CDHandler.loadAllRequests()
             }
-            self.requestTableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                self.requestTableView.reloadData()
+                if (self.refreshControl.isRefreshing) {
+                    self.refreshControl.endRefreshing()
+                }
+            }
         }
     }
     
@@ -41,7 +69,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
             return
         }
         
-        DBRef.child("userRequests/\(uid)").observe(.value) { (snapshot) in
+        DBRef.child("userRequests/\(uid)").observeSingleEvent(of: .value) { (snapshot) in
             var requests = [Request]()
             var counter = snapshot.childrenCount
             for child in snapshot.children {
@@ -51,8 +79,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
                     if r != nil { requests.append(r!) }
                     counter -= 1
                     if counter == 0 {
-                        self.userRequests = requests.reversed()
-                        self.requestTableView.reloadData()
+                        onComplete(requests)
                     }
                 }
             }
@@ -77,7 +104,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            return NewItemCell.buildInstance(for: requestTableView, delegate: self, title: "New Request") ?? UITableViewCell()
+            return NewItemCell.buildInstance(for: requestTableView, delegate: self, title: NSLocalizedString("New Request", comment: "")) ?? UITableViewCell()
         case 1:
             let request = userRequests[indexPath.row]
             if let cell = RequestSummaryCell.buildInstance(for: requestTableView, delegate: self) {
@@ -133,7 +160,7 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func unwindToLandingVC(_ segue: UIStoryboardSegue) {
-        self.requestTableView.reloadData()
+        refreshData()
     }
 
     /*

@@ -139,17 +139,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // errors
         case .invalidEmail:
-            errorLabel.text = "This is not an email!"
+            errorLabel.text = NSLocalizedString("This is not an email!", comment: "")
             emailField?.displayError()
         case .missingEmail:
-            errorLabel.text = "No email found!"
+            errorLabel.text = NSLocalizedString("No email found!", comment: "")
             emailField?.displayError()
         case .wrongDetails:
-            errorLabel.text = "Wrong email or password!"
+            errorLabel.text = NSLocalizedString("Wrong email or password!", comment: "")
             emailField?.displayError()
             pwField?.displayError()
         case .wrongRole:
-            errorLabel.text = "Not an elderly!"
+            errorLabel.text = NSLocalizedString("Not an elderly!", comment: "")
             emailField?.displayError()
             
         // success
@@ -158,7 +158,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         // other
         default:
-            errorLabel.text = "An unknown error occured. Please try again later."
+            errorLabel.text = NSLocalizedString("An unknown error occured. Please try again later.", comment: "")
             emailField?.displayError()
             pwField?.displayError()
         }

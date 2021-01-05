@@ -1,0 +1,38 @@
+/* Class = "UINavigationItem"; title = "What is this?"; ObjectID = "4Kd-zm-D5f"; */
+"4Kd-zm-D5f.title" = "这是什么？";
+
+/* Class = "UIViewController"; title = "LoginViewController"; ObjectID = "EPA-1n-TgF"; */
+"EPA-1n-TgF.title" = "LoginViewController";
+
+/* Class = "UILabel"; text = "We help elderly who are registered with volunteer organisations to request for groceries, neccessities and daily household goods, which are then delivered to their doorstep.\n\nInterested? Learn more about us and how to sign up here!"; ObjectID = "KZx-z4-pPH"; */
+"KZx-z4-pPH.text" = "我们帮助在志愿组织注册的老年人索取杂货，必需品和日常家庭用品，然后将这些物品运送到他们家门口。 \n\n有兴趣吗? 在这里详细了解我们以及如何注册！";
+
+/* Class = "UINavigationItem"; title = "kasei."; ObjectID = "NcD-am-5LF"; */
+"NcD-am-5LF.title" = "kasei.";
+
+/* Class = "UIButton"; normalTitle = "learn more"; ObjectID = "Wbr-Up-lgC"; */
+"Wbr-Up-lgC.normalTitle" = "了解更多";
+
+/* Class = "UILabel"; text = "Kasei is an app for social good."; ObjectID = "byv-wa-f1c"; */
+"byv-wa-f1c.text" = "Kasei是一款用于社会公益的应用程序。";
+
+/* Class = "UIViewController"; title = "MoreInfoViewController"; ObjectID = "dlu-lv-ELi"; */
+"dlu-lv-ELi.title" = "MoreInfoViewController";
+
+/* Class = "UIButton"; normalTitle = "?"; ObjectID = "hEb-Jv-ahe"; */
+"hEb-Jv-ahe.normalTitle" = "?";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "kEf-Ej-at2"; */
+"kEf-Ej-at2.normalTitle" = "登入";
+
+/* Class = "UILabel"; text = "Our Partners:\n- TOUCH Community Services\n- Salvation Army Peacehaven\n- Food From The Heart\n\nMade with ❤️ by Eugene Long."; ObjectID = "mMO-pd-EeS"; */
+"mMO-pd-EeS.text" = "Our Partners:\n- TOUCH Community Services\n- Salvation Army Peacehaven\n- Food From The Heart\n\nMade with ❤️ by Eugene Long.";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "mVq-db-RSn"; */
+"mVq-db-RSn.placeholder" = "密码";
+
+/* Class = "UILabel"; text = "k."; ObjectID = "pR3-3r-7at"; */
+"pR3-3r-7at.text" = "k.";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "vkD-rs-ukv"; */
+"vkD-rs-ukv.placeholder" = "电子邮件";

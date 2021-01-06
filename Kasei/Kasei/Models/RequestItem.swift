@@ -29,12 +29,8 @@ func getRequestItem(DBRef: DatabaseReference, forID id: String, onComplete: @esc
         
         var path = "name"
         
-        switch Locale.current.languageCode {
-        case "zh":
+        if Locale.current.languageCode == "zh" {
             path += "_zh"
-            break;
-        default:
-            break;
         }
         
         guard let name = snapshot.childSnapshot(forPath: path).value as? String else {

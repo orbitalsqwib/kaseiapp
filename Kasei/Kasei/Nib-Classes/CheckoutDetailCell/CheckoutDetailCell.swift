@@ -13,6 +13,8 @@ class CheckoutDetailCell: ElevatedTableViewCell, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var slotPicker: UIPickerView!
     
+    var slots = [String]()
+    
     override func awakeFromNib() {
         //Pre-initialization code
         containerView = detailContainer
@@ -26,16 +28,28 @@ class CheckoutDetailCell: ElevatedTableViewCell, UIPickerViewDataSource, UIPicke
         datePicker.calendar = .current
         slotPicker.dataSource = self
         slotPicker.delegate = self
+        
+        // populate available slots
+        slots.append(timeslotString(from: 8, to: 10))
+        slots.append(timeslotString(from: 10, to: 12))
+        slots.append(timeslotString(from: 12, to: 14))
+        slots.append(timeslotString(from: 14, to: 16))
+        slots.append(timeslotString(from: 15, to: 18))
+        slots.append(timeslotString(from: 18, to: 20))
     }
     
-    var slots = [
-        "8am - 10am",
-        "10am - 12pm",
-        "12pm - 2pm",
-        "2pm - 4pm",
-        "4pm - 6pm",
-        "6pm - 8pm"
-    ]
+    func timeslotString(from start: Int, to end: Int) -> String {
+        let a = DateComponents(hour: start)
+        let b = DateComponents(hour: end)
+        
+        let df = DateFormatter()
+        df.dateFormat = "h a"
+        
+        let astr = df.string(from: Calendar.current.date(from: a)!)
+        let bstr = df.string(from: Calendar.current.date(from: b)!)
+        
+        return "\(astr) - \(bstr)"
+    }
     
     func tomorrowDate() -> Date {
         let now = Calendar.current.dateComponents(in: .current, from: Date())

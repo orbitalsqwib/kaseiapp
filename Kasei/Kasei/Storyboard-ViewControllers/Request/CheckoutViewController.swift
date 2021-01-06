@@ -94,7 +94,7 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         request?.delSlotStart = detailCell.getStartDelSlot()
-        request?.status = NSLocalizedString("Request Sent", comment: "")
+        request?.status = "sent"
         
         let DBRef = Database.database().reference()
         

@@ -283,8 +283,6 @@ Interested? Learn more about us and how to sign up here!</string>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="pR3-3r-7at" secondAttribute="bottom" id="58D-QD-N2G"/>
                                                     <constraint firstAttribute="height" constant="216" id="5Cj-8O-LSF"/>
-                                                    <constraint firstItem="pR3-3r-7at" firstAttribute="centerY" secondItem="DvJ-Of-GPG" secondAttribute="centerY" id="QRH-FI-uSA"/>
-                                                    <constraint firstItem="pR3-3r-7at" firstAttribute="centerX" secondItem="DvJ-Of-GPG" secondAttribute="centerX" id="ee7-zH-T4D"/>
                                                     <constraint firstItem="pR3-3r-7at" firstAttribute="leading" secondItem="DvJ-Of-GPG" secondAttribute="leading" id="h1e-V9-Lcm"/>
                                                     <constraint firstItem="pR3-3r-7at" firstAttribute="top" secondItem="DvJ-Of-GPG" secondAttribute="top" id="iYU-vy-Ffq"/>
                                                     <constraint firstAttribute="trailing" secondItem="pR3-3r-7at" secondAttribute="trailing" id="wLR-3B-VZh"/>

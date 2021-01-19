@@ -45,8 +45,10 @@ class RequestDetailViewController: CardDetailVC, UITableViewDelegate, UITableVie
         switch indexPath.section {
         case 0:
             if let cell = RequestDetailsCell.buildInstance(for: cardTableView) {
-                cell.statusLabel.text = request?.status
-                cell.deliverySlotLabel.text = request?.delSlotString()
+                if let r = request {
+                    cell.statusLabel.text = StatusMap.getStatus(for: r.status!)
+                    cell.deliverySlotLabel.text = r.delSlotString()
+                }
                 return cell
             } else {
                 return UITableViewCell()

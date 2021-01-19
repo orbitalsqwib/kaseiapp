@@ -13,6 +13,7 @@ class RequestSummaryCell: ElevatedTableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var deliverySlotLabel: UILabel!
     @IBOutlet weak var contentSummary: UILabel!
+    @IBOutlet weak var isNewIndicator: UIView!
     
     var delegate: RequestSummaryCellProtocol? = nil
     

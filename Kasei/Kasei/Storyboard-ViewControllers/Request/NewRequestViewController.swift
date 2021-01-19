@@ -88,6 +88,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
         alert.addAction(.init(title: NSLocalizedString("Confirm", comment: ""), style: .destructive, handler: { (alert) in
             self.cancelNewRequest()
         }))
+        alert.view.tintColor = UIColor(named: "Tint")
         self.present(alert, animated: true, completion: nil)
     }
     

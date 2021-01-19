@@ -23,6 +23,7 @@
 // Profile
 "Profile" = "个人资料";
 "Sign Out" = "登出";
+"Change Language" = "改变语言";
 
 // RequestDetail
 "Details" = "细节";

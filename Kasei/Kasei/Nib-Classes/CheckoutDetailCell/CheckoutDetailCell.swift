@@ -14,6 +14,7 @@ class CheckoutDetailCell: ElevatedTableViewCell, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var slotPicker: UIPickerView!
     
     var slots = [String]()
+    var timeIntervals = [TimeInterval]()
     
     override func awakeFromNib() {
         //Pre-initialization code
@@ -30,15 +31,15 @@ class CheckoutDetailCell: ElevatedTableViewCell, UIPickerViewDataSource, UIPicke
         slotPicker.delegate = self
         
         // populate available slots
-        slots.append(timeslotString(from: 8, to: 10))
-        slots.append(timeslotString(from: 10, to: 12))
-        slots.append(timeslotString(from: 12, to: 14))
-        slots.append(timeslotString(from: 14, to: 16))
-        slots.append(timeslotString(from: 15, to: 18))
-        slots.append(timeslotString(from: 18, to: 20))
+        addTimeslotString(from: 8, to: 10)
+        addTimeslotString(from: 10, to: 12)
+        addTimeslotString(from: 12, to: 14)
+        addTimeslotString(from: 14, to: 16)
+        addTimeslotString(from: 16, to: 18)
+        addTimeslotString(from: 18, to: 20)
     }
     
-    func timeslotString(from start: Int, to end: Int) -> String {
+    func addTimeslotString(from start: Int, to end: Int) {
         let a = DateComponents(hour: start)
         let b = DateComponents(hour: end)
         
@@ -48,7 +49,8 @@ class CheckoutDetailCell: ElevatedTableViewCell, UIPickerViewDataSource, UIPicke
         let astr = df.string(from: Calendar.current.date(from: a)!)
         let bstr = df.string(from: Calendar.current.date(from: b)!)
         
-        return "\(astr) - \(bstr)"
+        slots.append("\(astr) - \(bstr)")
+        timeIntervals.append(TimeInterval(start*60*60))
     }
     
     func tomorrowDate() -> Date {
@@ -65,28 +67,12 @@ class CheckoutDetailCell: ElevatedTableViewCell, UIPickerViewDataSource, UIPicke
         return Calendar.current.date(from: nextMth)!
     }
     
-    func slotToTimeInterval(slot: String) -> TimeInterval? {
-        if let timeSubStr = slot.split(separator: "-", maxSplits: 2, omittingEmptySubsequences: true).first {
-            var timeStr = String(timeSubStr.dropLast())
-            var hours = 0
-            if timeStr.popLast() == "p" {
-                hours += 12
-            }
-            timeStr = String(timeStr.dropLast())
-            hours += Int(timeStr) ?? 0
-            return TimeInterval(hours*60*60)
-        }
-        return nil
-    }
-    
     func getStartDelSlot() -> Date? {
         var date = datePicker.date
         let selected = slotPicker.selectedRow(inComponent: 0)
-        if let timeslot = slotToTimeInterval(slot: slots[selected]) {
-            date.addTimeInterval(timeslot)
-            return date
-        }
-        return nil
+        let timeslot = timeIntervals[selected]
+        date.addTimeInterval(timeslot)
+        return date
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

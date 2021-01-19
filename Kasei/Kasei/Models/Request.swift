@@ -15,6 +15,7 @@ struct Request: Codable {
     var status: String?
     var delSlotStart: Date?
     var items: Array<RequestItem>
+    var isNew: Bool?
     
     init(id: String?, dateCreated: Date?, senderID: String, status: String?, delSlotStart: Date?, items: Array<RequestItem>) {
         self.id = id
@@ -30,9 +31,13 @@ struct Request: Codable {
         if let slotStart = delSlotStart {
             let slotEnd = slotStart.addingTimeInterval(.init(60*60*2)) // +2h
             let startFormatter = DateFormatter()
-            startFormatter.dateFormat = "dd MMM yyyy, ha"
+            
+            let localisedFormatStart = DateFormatter.dateFormat(fromTemplate: "dd MMM yyyy, ha", options: 0, locale: Locale.current)
+            let localisedFormatEnd = DateFormatter.dateFormat(fromTemplate: "ha", options: 0, locale: Locale.current)
+            
+            startFormatter.dateFormat = localisedFormatStart
             let endFormatter = DateFormatter()
-            endFormatter.dateFormat = "ha"
+            endFormatter.dateFormat = localisedFormatEnd
             
             return startFormatter.string(from: slotStart) + " - " + endFormatter.string(from: slotEnd)
         }

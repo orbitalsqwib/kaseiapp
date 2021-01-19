@@ -91,18 +91,49 @@
                             <constraint firstItem="CYW-bX-jPi" firstAttribute="top" secondItem="YrL-vy-gUO" secondAttribute="bottom" id="yYg-oo-fEV"/>
                         </constraints>
                     </view>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bF-3j-cQV" userLabel="isNewIndicator">
+                        <rect key="frame" x="316" y="12" width="20" height="20"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6t-Eg-Eox">
+                                <rect key="frame" x="5" y="5" width="10" height="10"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="Destructive"/>
+                        <constraints>
+                            <constraint firstItem="e6t-Eg-Eox" firstAttribute="top" secondItem="9bF-3j-cQV" secondAttribute="top" constant="5" id="KC7-bq-D3s"/>
+                            <constraint firstAttribute="width" constant="20" id="d72-tH-x6a"/>
+                            <constraint firstAttribute="height" constant="20" id="gCb-xx-sE7"/>
+                            <constraint firstAttribute="bottom" secondItem="e6t-Eg-Eox" secondAttribute="bottom" constant="5" id="n1G-If-nsg"/>
+                            <constraint firstItem="e6t-Eg-Eox" firstAttribute="leading" secondItem="9bF-3j-cQV" secondAttribute="leading" constant="5" id="um3-Np-OID"/>
+                            <constraint firstAttribute="trailing" secondItem="e6t-Eg-Eox" secondAttribute="trailing" constant="5" id="vDZ-AX-9M6"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ddS-i1-XOq" firstAttribute="top" secondItem="9bF-3j-cQV" secondAttribute="bottom" constant="-16" id="4Mh-mZ-NHG"/>
                     <constraint firstItem="ddS-i1-XOq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Hn1-ca-9AC"/>
                     <constraint firstItem="ddS-i1-XOq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="XOX-G4-nLe"/>
                     <constraint firstAttribute="trailing" secondItem="ddS-i1-XOq" secondAttribute="trailing" constant="16" id="eD3-mV-4Vg"/>
                     <constraint firstAttribute="bottom" secondItem="ddS-i1-XOq" secondAttribute="bottom" constant="4" id="hWE-rz-OhW"/>
+                    <constraint firstItem="9bF-3j-cQV" firstAttribute="leading" secondItem="ddS-i1-XOq" secondAttribute="trailing" constant="-16" id="omt-dz-Mp7"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="contentSummary" destination="hov-DW-OuI" id="RWQ-gE-Bki"/>
                 <outlet property="deliverySlotLabel" destination="CYW-bX-jPi" id="Qfd-Hu-sON"/>
+                <outlet property="isNewIndicator" destination="9bF-3j-cQV" id="gb9-aL-yJ5"/>
                 <outlet property="statusLabel" destination="dhd-oP-KIx" id="wCy-QH-Bru"/>
                 <outlet property="summaryContainer" destination="ddS-i1-XOq" id="cfz-cz-231"/>
             </connections>
@@ -118,6 +149,9 @@
         </namedColor>
         <namedColor name="Button Text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Destructive">
+            <color red="1" green="0.23899999260902405" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

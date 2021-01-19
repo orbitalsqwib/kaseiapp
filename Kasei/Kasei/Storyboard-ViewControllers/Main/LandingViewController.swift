@@ -71,6 +71,12 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         DBRef.child("userRequests/\(uid)").observeSingleEvent(of: .value) { (snapshot) in
             var requests = [Request]()
+            
+            guard snapshot.exists() else {
+                onComplete(requests)
+                return
+            }
+            
             var counter = snapshot.childrenCount
             if counter > 0 {
                 for child in snapshot.children {
@@ -105,27 +111,6 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func decodeStatus(for statusCode: String) -> String {
-        var code = statusCode
-        
-        if Locale.current.languageCode == "zh" {
-            code += "_zh"
-        }
-        
-        return statusMap[code]!
-    }
-    
-    let statusMap = [
-        "done": "Completed!",
-        "done_zh": "已完成!",
-        "otw": "Delivering...",
-        "otw_zh": "正在运送...",
-        "prep": "Preparing...",
-        "prep_zh": "正在准备...",
-        "sent": "Request Sent",
-        "sent_zh": "请求已发送"
-    ]
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
@@ -133,8 +118,14 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
         case 1:
             let request = userRequests[indexPath.row]
             if let cell = RequestSummaryCell.buildInstance(for: requestTableView, delegate: self) {
-                cell.statusLabel.text = decodeStatus(for: request.status!)
+                cell.statusLabel.text = StatusMap.getStatus(for: request.status!)
                 cell.deliverySlotLabel.text = request.delSlotString()
+                
+                if request.isNew ?? false {
+                    cell.isNewIndicator.isHidden = false
+                } else {
+                    cell.isNewIndicator.isHidden = true
+                }
                 
                 // format contents
                 var summaryStrings = [String]()

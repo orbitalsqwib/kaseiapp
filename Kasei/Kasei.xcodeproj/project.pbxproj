@@ -51,6 +51,7 @@
 		CBCC9CF425652DEB0002F61D /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC9CF325652DEB0002F61D /* HeaderCell.swift */; };
 		CBD73880255F6A0600927D9A /* RequestItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBD7387F255F6A0600927D9A /* RequestItemCell.xib */; };
 		CBD73883255F6A5500927D9A /* RequestItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD73882255F6A5500927D9A /* RequestItemCell.swift */; };
+		CBE49F3625B6817600453EFE /* StatusMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE49F3525B6817600453EFE /* StatusMap.swift */; };
 		CBEFD82B25669054000128D0 /* CheckoutDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEFD82A25669054000128D0 /* CheckoutDetailCell.swift */; };
 		CBEFD82E2566B2DB000128D0 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBEFD82D2566B2DB000128D0 /* CheckoutViewController.swift */; };
 		CBF48CC3255FBFB500F747E1 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF48CC2255FBFB500F747E1 /* LandingViewController.swift */; };
@@ -112,6 +113,7 @@
 		CBCC9CF325652DEB0002F61D /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		CBD7387F255F6A0600927D9A /* RequestItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestItemCell.xib; sourceTree = "<group>"; };
 		CBD73882255F6A5500927D9A /* RequestItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestItemCell.swift; sourceTree = "<group>"; };
+		CBE49F3525B6817600453EFE /* StatusMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMap.swift; sourceTree = "<group>"; };
 		CBEFD82A25669054000128D0 /* CheckoutDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutDetailCell.swift; sourceTree = "<group>"; };
 		CBEFD82D2566B2DB000128D0 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		CBF48CC2255FBFB500F747E1 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				CBAAEC8B255CE41100621139 /* LoginField.swift */,
 				CB8944662563B6F500900839 /* FirAuthHandler.swift */,
+				CBE49F3525B6817600453EFE /* StatusMap.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				CBABBD24255BB2C70092A0D5 /* LoginViewController.swift in Sources */,
 				CBAAEC86255CCB8600621139 /* MoreInfoViewController.swift in Sources */,
 				CBEFD82E2566B2DB000128D0 /* CheckoutViewController.swift in Sources */,
+				CBE49F3625B6817600453EFE /* StatusMap.swift in Sources */,
 				CB53B0D82566407B0019DF5E /* ItemCategory.swift in Sources */,
 				CBCC9CC92564B60B0002F61D /* NewItemCell.swift in Sources */,
 				CB6FCEF2256532A800CC03C0 /* RequestSummaryCell.swift in Sources */,

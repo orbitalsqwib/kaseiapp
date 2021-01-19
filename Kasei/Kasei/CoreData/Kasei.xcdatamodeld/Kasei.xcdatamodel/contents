@@ -4,6 +4,7 @@
         <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="delSlotStart" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isNew" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="senderID" optional="YES" attributeType="String"/>
         <attribute name="status" optional="YES" attributeType="String"/>
         <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDRequestItem" inverseName="request" inverseEntity="CDRequestItem"/>
@@ -17,7 +18,7 @@
         <relationship name="request" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDRequest" inverseName="items" inverseEntity="CDRequest"/>
     </entity>
     <elements>
-        <element name="CDRequest" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="CDRequest" positionX="-63" positionY="-18" width="128" height="134"/>
         <element name="CDRequestItem" positionX="167.21875" positionY="108.0817565917969" width="128" height="133"/>
     </elements>
 </model>

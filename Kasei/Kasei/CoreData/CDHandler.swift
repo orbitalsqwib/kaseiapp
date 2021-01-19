@@ -23,6 +23,7 @@ struct CDHandler {
         cdrequest.setValue(request.senderID, forKey: "senderID")
         cdrequest.setValue(request.status, forKey: "status")
         cdrequest.setValue(request.delSlotStart, forKey: "delSlotStart")
+        cdrequest.setValue(true, forKey: "isNew")
         
         // add items to request
         entity = NSEntityDescription.entity(forEntityName: "CDRequestItem", in: context)!
@@ -89,6 +90,7 @@ struct CDHandler {
         // if fetch is successful, convert cd class into regular class
         for cdr in cdrequests {
             var req = Request(id: cdr.id, dateCreated: cdr.dateCreated, senderID: cdr.senderID!, status: cdr.status, delSlotStart: cdr.delSlotStart, items: [])
+            req.isNew = cdr.isNew
             
             var cditems = cdr.items?.allObjects as! [CDRequestItem]
             cditems.sort{$0.name! < $1.name!}
@@ -102,6 +104,27 @@ struct CDHandler {
         }
         
         return requests
+    }
+    
+    static func markRequestAsOld(id: String) {
+        var cdrequests = [CDRequest]()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<CDRequest>(entityName: "CDRequest")
+        request.predicate = NSPredicate(format: "id == %s", argumentArray: [id])
+        
+        do {
+            cdrequests = try context.fetch(request)
+            if cdrequests.first != nil {
+                cdrequests.first!.setValue(false, forKey: "isNew")
+            }
+            
+            try context.save()
+        } catch let error as NSError {
+            print("Could not update. \(error) \(error.userInfo)")
+        }
     }
     
     static func updateSavedRequests(newRequests: [Request]) {
@@ -120,6 +143,9 @@ struct CDHandler {
                 if changedLocale { break }
                 else if oldRequests.first!.id == newRequests[i].id && oldRequests.first!.status == newRequests[i].status {
                     
+                    if oldRequests.first!.isNew ?? false {
+                        markRequestAsOld(id: oldRequests.first!.id!)
+                    }
                     newRequests.remove(at: i)
                     oldRequests.removeFirst()
                     hasMatch = true

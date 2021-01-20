@@ -22,6 +22,7 @@
 		CB53B08D2565530B0019DF5E /* RequestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB53B08C2565530B0019DF5E /* RequestItem.swift */; };
 		CB53B091256554AB0019DF5E /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB53B090256554AB0019DF5E /* Request.swift */; };
 		CB53B0D82566407B0019DF5E /* ItemCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB53B0D72566407B0019DF5E /* ItemCategory.swift */; };
+		CB609D4825B7DAA800312A6A /* UserDetailsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB609D4725B7DAA800312A6A /* UserDetailsHandler.swift */; };
 		CB6FCEF2256532A800CC03C0 /* RequestSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FCEF0256532A800CC03C0 /* RequestSummaryCell.swift */; };
 		CB6FCEF92565372100CC03C0 /* RequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FCEF72565372100CC03C0 /* RequestDetailViewController.swift */; };
 		CB8944672563B6F500900839 /* FirAuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8944662563B6F500900839 /* FirAuthHandler.swift */; };
@@ -82,6 +83,7 @@
 		CB53B08C2565530B0019DF5E /* RequestItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestItem.swift; sourceTree = "<group>"; };
 		CB53B090256554AB0019DF5E /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		CB53B0D72566407B0019DF5E /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
+		CB609D4725B7DAA800312A6A /* UserDetailsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsHandler.swift; sourceTree = "<group>"; };
 		CB6FCEF0256532A800CC03C0 /* RequestSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSummaryCell.swift; sourceTree = "<group>"; };
 		CB6FCEF72565372100CC03C0 /* RequestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailViewController.swift; sourceTree = "<group>"; };
 		CB8944662563B6F500900839 /* FirAuthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirAuthHandler.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				CBAAEC8B255CE41100621139 /* LoginField.swift */,
 				CB8944662563B6F500900839 /* FirAuthHandler.swift */,
 				CBE49F3525B6817600453EFE /* StatusMap.swift */,
+				CB609D4725B7DAA800312A6A /* UserDetailsHandler.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				CBCC9CC92564B60B0002F61D /* NewItemCell.swift in Sources */,
 				CB6FCEF2256532A800CC03C0 /* RequestSummaryCell.swift in Sources */,
 				CB10E186256110A6009BE2A5 /* UIViewShadowExtension.swift in Sources */,
+				CB609D4825B7DAA800312A6A /* UserDetailsHandler.swift in Sources */,
 				CBABBCD4255B7AD00092A0D5 /* AppDelegate.swift in Sources */,
 				CB0ED9E125A3F2C100B9BEB9 /* Kasei.xcdatamodeld in Sources */,
 				CB396B85255CF148006B154C /* MNButton.swift in Sources */,

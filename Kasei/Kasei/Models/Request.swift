@@ -45,7 +45,7 @@ struct Request: Codable {
     }
 }
 
-func postRequest(DBRef: DatabaseReference, req: Request, onComplete: @escaping (Error?, Error?) -> ()) {
+func postRequest(DBRef: DatabaseReference, req: Request, onComplete: @escaping (Bool) -> ()) {
     let authHandler = FirAuthHandler.self
     guard let uid = authHandler.firAuth.currentUser?.uid else {
         return
@@ -63,20 +63,42 @@ func postRequest(DBRef: DatabaseReference, req: Request, onComplete: @escaping (
     
     let reqDict = ["dateCreated": Date().timeIntervalSince1970, "content": items, "delSlotStart" : delSlotStart, "senderID" : req.senderID, "status" : req.status ?? ""] as [String : Any]
     
-    let reqID = DBRef.child("requests").childByAutoId()
-    reqID.setValue(reqDict) { (err, _) in
-        if err != nil {
-            onComplete(err, nil)
-        } else {
-            DBRef.child("userRequests/\(uid)").childByAutoId().setValue(reqID.key) { (err2, _) in
-                onComplete(err, err2)
+    UserDetailsHandler.retrieveSubzone(DBRef: DBRef) { (zoneid, success) in
+        if success {
+            let reqID = DBRef.child("requests/\(zoneid)").childByAutoId()
+            reqID.setValue(reqDict) { (err, _) in
+                guard err == nil else {
+                    onComplete(false)
+                    return
+                }
+                
+                DBRef.child("userRequests/\(uid)/\(zoneid)").childByAutoId().setValue(reqID.key) { (err2, _) in
+                    guard err2 == nil else {
+                        onComplete(false)
+                        return
+                    }
+                    
+                    for itm in req.items {
+                        DBRef.child("requestCounter/\(zoneid)/\(itm.id)").runTransactionBlock { (data) -> TransactionResult in
+                            var itemCounter = data.value as? Int ?? 0
+                            itemCounter += itm.qty
+                            
+                            data.value = itemCounter
+                            return TransactionResult.success(withValue: data)
+                        }
+                    }
+                    
+                    onComplete(true)
+                }
             }
+        } else {
+            onComplete(false)
         }
     }
 }
 
-func getRequest(DBRef: DatabaseReference, forID id: String, onComplete: @escaping (Request?) -> ()) {
-    DBRef.child("requests/\(id)").observeSingleEvent(of: .value) { (snapshot) in
+func getRequest(DBRef: DatabaseReference, forZoneID zoneID: String, forID id: String, onComplete: @escaping (Request?) -> ()) {
+    DBRef.child("requests/\(zoneID)/\(id)").observeSingleEvent(of: .value) { (snapshot) in
         let id = snapshot.key
         
         guard let dateCreatedSeconds = snapshot.childSnapshot(forPath: "dateCreated").value as? Double else {

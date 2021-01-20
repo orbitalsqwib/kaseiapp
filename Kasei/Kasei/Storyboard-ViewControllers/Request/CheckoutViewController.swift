@@ -100,10 +100,10 @@ class CheckoutViewController: UIViewController, UITableViewDelegate, UITableView
         
         showResultCard()
         if let req = request {
-            postRequest(DBRef: DBRef, req: req) { (err, err2) in
+            postRequest(DBRef: DBRef, req: req) { (success) in
                 self.resultLoadIndicator.stopAnimating()
                 self.resultCardIcon.isHidden = false
-                if err == nil && err2 == nil {
+                if success == true {
                     self.resultDisplaySuccess()
                 } else {
                     self.resultDisplayFailure()

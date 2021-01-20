@@ -77,21 +77,27 @@ class LandingViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return
             }
             
-            var counter = snapshot.childrenCount
-            if counter > 0 {
-                for child in snapshot.children {
-                    let childSnap = child as! DataSnapshot
-                    let id = childSnap.value as! String
-                    getRequest(DBRef: self.DBRef, forID: id) { (r) in
+            var zoneCount = snapshot.childrenCount
+            for zoneChild in snapshot.children {
+                let zoneChildSnap = zoneChild as! DataSnapshot
+                let zoneID = zoneChildSnap.key
+                var requestCount = zoneChildSnap.childrenCount
+                
+                for requestsChildSnap in zoneChildSnap.children {
+                    let requestIDSnap = requestsChildSnap as! DataSnapshot
+                    let id = requestIDSnap.value as! String
+                    
+                    getRequest(DBRef: self.DBRef, forZoneID: zoneID, forID: id) { (r) in
                         if r != nil { requests.append(r!) }
-                        counter -= 1
-                        if counter == 0 {
+                        requestCount -= 1
+                        if requestCount == 0 {
+                            zoneCount -= 1
+                        }
+                        if zoneCount == 0 && requestCount == 0 {
                             onComplete(requests)
                         }
                     }
                 }
-            } else {
-                onComplete(requests)
             }
         }
     }

@@ -33,7 +33,12 @@ func getRequestItem(DBRef: DatabaseReference, forID id: String, onComplete: @esc
             path += "_zh"
         }
         
-        guard let name = snapshot.childSnapshot(forPath: path).value as? String else {
+        var name = snapshot.childSnapshot(forPath: path).value as? String
+        if name == nil {
+            name = snapshot.childSnapshot(forPath: "name").value as? String
+        }
+        
+        guard name != nil else {
             onComplete(nil)
             return
         }
@@ -48,6 +53,6 @@ func getRequestItem(DBRef: DatabaseReference, forID id: String, onComplete: @esc
             return
         }
         
-        onComplete(RequestItem(id: id, name: name, icon: icon, qty: 0, bgCol: bgCol))
+        onComplete(RequestItem(id: id, name: name!, icon: icon, qty: 0, bgCol: bgCol))
     }
 }

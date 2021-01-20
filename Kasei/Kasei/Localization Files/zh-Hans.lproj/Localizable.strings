@@ -49,3 +49,11 @@
 "Sending..." = "正在发送...";
 "Success!" = "成功！";
 "Something went wrong!" = "出了些问题！";
+
+// Misc --
+
+// Status Map
+"Completed!" = "已完成!";
+"Delivering..." = "正在运送...";
+"Preparing..." = "正在准备...";
+"Request Sent" = "请求已发送";

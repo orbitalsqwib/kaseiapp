@@ -27,7 +27,7 @@ class Basket: BasketHandlerProtocol {
             }
         }
         
-        if !match {
+        if !match && modifier > 0 {
             item.qty += 1
             items.append(item)
         }

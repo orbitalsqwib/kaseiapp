@@ -78,21 +78,38 @@ func postRequest(DBRef: DatabaseReference, req: Request, onComplete: @escaping (
                         return
                     }
                     
-                    for itm in req.items {
-                        DBRef.child("requestCounter/\(zoneid)/\(itm.id)").runTransactionBlock { (data) -> TransactionResult in
-                            var itemCounter = data.value as? Int ?? 0
-                            itemCounter += itm.qty
-                            
-                            data.value = itemCounter
-                            return TransactionResult.success(withValue: data)
-                        }
-                    }
-                    
+                    updateCounters(for: req.items, with: DBRef, in: zoneid)
                     onComplete(true)
                 }
             }
         } else {
             onComplete(false)
+        }
+    }
+}
+
+func updateCounters(for items: [RequestItem], with DBRef: DatabaseReference, in zoneid: String) {
+    for item in items {
+        DBRef.child("items/\(item.id)/stock").runTransactionBlock { (data) -> TransactionResult in
+            var stock = data.value as? Int ?? 0
+            stock -= item.qty
+            data.value = stock
+            return TransactionResult.success(withValue: data)
+        }
+        
+        DBRef.child("requestCounter/\(zoneid)/\(item.id)").runTransactionBlock { (data) -> TransactionResult in
+            var itemCounter = data.value as? Int ?? 0
+            itemCounter += item.qty
+            
+            data.value = itemCounter
+            return TransactionResult.success(withValue: data)
+        }
+        
+        DBRef.child("items/\(item.id)/requested").runTransactionBlock { (data) -> TransactionResult in
+            var requestedCounter = data.value as? Int ?? 0
+            requestedCounter += item.qty
+            data.value = requestedCounter
+            return TransactionResult.success(withValue: data)
         }
     }
 }

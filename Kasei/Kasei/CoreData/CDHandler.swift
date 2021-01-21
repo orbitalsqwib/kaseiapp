@@ -35,6 +35,8 @@ struct CDHandler {
             cditem.setValue(item.icon, forKey: "icon")
             cditem.setValue(item.qty, forKey: "qty")
             cditem.setValue(item.bgCol, forKey: "bgCol")
+            cditem.setValue(item.qtyLimit, forKey: "qtyLimit")
+            cditem.setValue(item.qtyRemaining, forKey: "qtyRemaining")
             
             cdrequest.addToItems(cditem)
         }

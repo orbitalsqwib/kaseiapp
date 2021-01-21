@@ -14,7 +14,9 @@ class RequestItemCell: ElevatedTableViewCell {
     @IBOutlet weak var mainTitle: UILabel!
     @IBOutlet weak var iconLabel: UILabel!
     @IBOutlet weak var minusContainer: UIView!
+    @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusContainer: UIView!
+    @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var tapper: UIButton!
     
@@ -26,9 +28,14 @@ class RequestItemCell: ElevatedTableViewCell {
     var icon: String = "" {
         didSet { iconLabel.text = icon }
     }
+    var maxCount: Int?
     var count: Int = 0 {
         didSet {
             countLabel.text = String(count)
+            if plusButton != nil, minusButton != nil {
+                plusButton.isEnabled = count < maxCount ?? 99
+                minusButton.isEnabled = count > 0
+            }
         }
     }
 

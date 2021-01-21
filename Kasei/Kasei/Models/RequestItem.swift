@@ -13,6 +13,8 @@ class RequestItem: Codable {
     var name: String
     var icon: String
     var qty: Int
+    var qtyLimit: Int?
+    var qtyRemaining: Int?
     var bgCol: String
     
     init(id: String, name: String, icon: String, qty: Int, bgCol: String) {
@@ -53,6 +55,16 @@ func getRequestItem(DBRef: DatabaseReference, forID id: String, onComplete: @esc
             return
         }
         
-        onComplete(RequestItem(id: id, name: name!, icon: icon, qty: 0, bgCol: bgCol))
+        let reqItem = RequestItem(id: id, name: name!, icon: icon, qty: 0, bgCol: bgCol)
+        
+        if let limit = snapshot.childSnapshot(forPath: "limit").value as? Int {
+            reqItem.qtyLimit = limit
+        }
+        
+        if let remaining = snapshot.childSnapshot(forPath: "remaining").value as? Int {
+            reqItem.qtyRemaining = remaining
+        }
+        
+        onComplete(reqItem)
     }
 }

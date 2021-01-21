@@ -17,12 +17,18 @@ class Basket: BasketHandlerProtocol {
     }
     
     func update(item: RequestItem, modifier: Int, updateItems: (([RequestItem]) -> Void)?) {
+        
+        // item must have limit
+        guard item.qtyLimit != nil else {
+            return
+        }
+        
         // search items for matching id
         var match = false
         for i in items {
             if i.id == item.id {
                 match = true
-                i.qty += modifier
+                i.qty = min(i.qty + modifier, i.qtyLimit!)
                 if i.qty <= 0 { removeItem(with: i.id) }
             }
         }

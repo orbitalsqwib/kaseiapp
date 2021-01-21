@@ -174,7 +174,9 @@
                 <outlet property="counterContainer" destination="mvF-VP-5jZ" id="8pS-72-HPl"/>
                 <outlet property="iconLabel" destination="Euj-C2-9ky" id="9ZC-xl-hkb"/>
                 <outlet property="mainTitle" destination="m77-f7-8av" id="10Q-zE-tK3"/>
+                <outlet property="minusButton" destination="2nc-UU-ANf" id="8v6-mw-uxk"/>
                 <outlet property="minusContainer" destination="O75-Pq-MSj" id="9YM-67-C23"/>
+                <outlet property="plusButton" destination="G65-7D-CK9" id="C0J-T7-rgJ"/>
                 <outlet property="plusContainer" destination="8qv-fi-bdY" id="Xvy-LM-gHf"/>
                 <outlet property="tapper" destination="0Ma-Az-d0N" id="4fH-w7-R9M"/>
             </connections>

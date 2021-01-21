@@ -59,9 +59,10 @@ struct UserDetailsHandler {
                 return
             }
             
-            guard let postalCode = snapshot.childSnapshot(forPath: "PostalCode").value as? Int else {
-                onComplete(nil)
-                return
+            var postalCode = snapshot.childSnapshot(forPath: "PostalCode").value as? String ?? String(snapshot.childSnapshot(forPath: "PostalCode").value as? Int ?? -1)
+            
+            if postalCode == "-1" {
+                postalCode = "Unavailable"
             }
             
             let addressString = "\(address), \(NSLocalizedString("Singapore", comment: "")) \(postalCode)"

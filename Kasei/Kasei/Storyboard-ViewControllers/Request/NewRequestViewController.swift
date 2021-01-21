@@ -73,6 +73,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
             
             if let cell = RequestItemCell.buildInstance(for: requestItemsTableView, delegate: self, title: item.name, icon: item.icon) {
                 cell.count = item.qty
+                cell.maxCount = min(item.qtyLimit ?? 99, item.qtyRemaining ?? 99)
                 return cell
             } else {
                 return UITableViewCell()

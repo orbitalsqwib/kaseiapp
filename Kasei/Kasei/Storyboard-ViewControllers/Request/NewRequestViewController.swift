@@ -7,13 +7,15 @@
 
 import UIKit
 
-class NewRequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewItemCellProtocol, RequestItemCellProtocol, RequestItemHandler {
+class NewRequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NewItemCellProtocol, RequestItemCellProtocol, RequestItemViewProtocol {
 
     @IBOutlet weak var requestItemsTableView: UITableView!
     @IBOutlet weak var actionBar: UIView!
     @IBOutlet weak var checkoutBtn: UIButton!
     
     var newRequest: Request?
+    
+    var basket = Basket()
     
     let authHandler = FirAuthHandler.self
     
@@ -56,7 +58,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
         case 0:
             return 1
         case 1:
-            return newRequest?.items.count ?? 0
+            return basket.items.count
         default:
             return 0
         }
@@ -67,9 +69,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
         case 0:
             return NewItemCell.buildInstance(for: requestItemsTableView, delegate: self, title: NSLocalizedString("Add Item", comment: "")) ?? UITableViewCell()
         case 1:
-            guard let item = newRequest?.items[indexPath.row] else {
-                return UITableViewCell()
-            }
+            let item = basket.items[indexPath.row]
             
             if let cell = RequestItemCell.buildInstance(for: requestItemsTableView, delegate: self, title: item.name, icon: item.icon) {
                 cell.count = item.qty
@@ -98,46 +98,40 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func newItem() {
         let catVC = CategoriesViewController(nibName: "CardDetailVC", bundle: nil)
-        catVC.delegateCarrier = self
-        catVC.itemsCarrier = newRequest?.items
+        catVC.itemViewDelegate = self
+        catVC.basketDelegate = basket
         present(catVC, animated: true, completion: nil)
     }
     
     func plusClicked(for cell: RequestItemCell) {
-        updateCountForItemHandler(for: requestItemsTableView, with: self, using: cell, items: newRequest?.items, modifier: 1)
+        guard let item = getItem(for: cell, in: requestItemsTableView, with: basket.items) else {
+            return
+        }
+        
+        basket.update(item: item, modifier: 1, updateItems: { (updatedItems) in
+            self.updateView(with: updatedItems)
+        })
     }
     
     func minusClicked(for cell: RequestItemCell) {
-        updateCountForItemHandler(for: requestItemsTableView, with: self, using: cell, items: newRequest?.items, modifier: -1)
+        guard let item = getItem(for: cell, in: requestItemsTableView, with: basket.items) else {
+            return
+        }
+        
+        basket.update(item: item, modifier: -1, updateItems: { (updatedItems) in
+            self.updateView(with: updatedItems)
+        })
     }
     
     func cellTapped(for cell: RequestItemCell) { }
     
-    func addItem(item: RequestItem) {
-        newRequest?.items.append(item)
-        if newRequest?.items.count == 1 {
-            actionBar.isHidden = false
-        }
+    func updateView(with items: [RequestItem]) {
+        basket.items = items
+        
+        // activate action bar only if basket contains items
+        actionBar.isHidden = basket.items.count <= 0
+        
         requestItemsTableView.reloadSections(.init(arrayLiteral: 1), with: .fade)
-    }
-    
-    func removeItem(item: RequestItem) {
-        newRequest!.items.removeAll { (requestItem) -> Bool in
-            requestItem.name == item.name
-        }
-        if newRequest?.items.count == 0 {
-            actionBar.isHidden = true
-        }
-        requestItemsTableView.reloadSections(.init(arrayLiteral: 1), with: .fade)
-    }
-    
-    func updateItemCount(item: RequestItem, newCount: Int) {
-        guard let index = newRequest?.items.firstIndex(where: {$0.name == item.name}) else { return
-        }
-        if let cell = requestItemsTableView.cellForRow(at: .init(row: index, section: 1)) as? RequestItemCell {
-            cell.count = newCount
-            newRequest!.items.first(where: {$0.name == item.name})?.qty = newCount
-        }
     }
     
     // MARK: - Navigation
@@ -146,6 +140,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is CheckoutViewController {
             let destVC = segue.destination as? CheckoutViewController
+            newRequest?.items = basket.items
             destVC?.request = newRequest
         }
     }
@@ -153,38 +148,15 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
 
 }
 
-protocol RequestItemHandler {
-    func addItem(item: RequestItem)
-    func removeItem(item: RequestItem)
-    func updateItemCount(item: RequestItem, newCount: Int)
-}
-
-func updateCountForItemHandler(for tableView: UITableView, with delegate: RequestItemHandler?, using cell: RequestItemCell, items: [RequestItem]?, modifier: Int) {
+func getItem(for cell: RequestItemCell, in tableView: UITableView, with itemDataSource: [RequestItem]) -> RequestItem? {
     guard let index = tableView.indexPath(for: cell)?.row else {
-        return
+        return nil
     }
     
-    if let item = items?[index] {
-        if modifier > 0 {
-            if cell.count == 0 {
-                if delegate != nil {
-                    delegate?.addItem(item: item)
-                }
-            }
-        } else {
-            if cell.count == 1 {
-                if delegate != nil {
-                    delegate?.removeItem(item: item)
-                    item.qty += modifier
-                    cell.count += modifier
-                    return
-                }
-            } else if cell.count == 0 {
-                return
-            }
-        }
-        item.qty += modifier
-        cell.count += modifier
-        delegate?.updateItemCount(item: item, newCount: item.qty)
-    }
+    return itemDataSource[index]
+    
+}
+
+protocol RequestItemViewProtocol : class {
+    func updateView(with items: [RequestItem])
 }

@@ -59,8 +59,8 @@ class ProfileViewController: CardDetailVC, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            if let cell = ProfileDetailsCell.buildInstance(for: cardTableView), profileDetails != nil {
-                let defaultText = NSLocalizedString("Unavailable", comment: "")
+            if let cell = ProfileDetailsCell.buildInstance(for: cardTableView) {
+                let defaultText = NSLocalizedString("Loading...", comment: "")
                 cell.nameLabel.text = profileDetails?.name ?? defaultText
                 cell.emailLabel.text = profileDetails?.email ?? defaultText
                 cell.addressLabel.text = profileDetails?.address ?? defaultText

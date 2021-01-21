@@ -10,8 +10,8 @@ import FirebaseDatabase
 
 class CategoriesViewController: CardDetailVC, UITableViewDelegate, UITableViewDataSource, RequestItemCellProtocol {
     
-    var delegateCarrier: RequestItemHandler?
-    var itemsCarrier: [RequestItem]?
+    weak var itemViewDelegate: RequestItemViewProtocol?
+    weak var basketDelegate: BasketHandlerProtocol?
     var categories: [ItemCategory]?
     
     let DBRef = Database.database().reference()
@@ -55,8 +55,8 @@ class CategoriesViewController: CardDetailVC, UITableViewDelegate, UITableViewDa
             let itemsVC = ItemsViewController(nibName: "CardDetailVC", bundle: nil)
             itemsVC.titleText = category.category
             itemsVC.itemIDs = category.itemIDs
-            itemsVC.delegate = delegateCarrier
-            itemsVC.basketItems = itemsCarrier ?? []
+            itemsVC.itemViewDelegate = itemViewDelegate
+            itemsVC.basketDelegate = basketDelegate
             present(itemsVC, animated: true, completion: nil)
         }
     }

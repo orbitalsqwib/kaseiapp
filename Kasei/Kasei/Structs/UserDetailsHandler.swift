@@ -59,7 +59,7 @@ struct UserDetailsHandler {
                 return
             }
             
-            guard let postalCode = snapshot.childSnapshot(forPath: "PostalCode").value as? String else {
+            guard let postalCode = snapshot.childSnapshot(forPath: "PostalCode").value as? Int else {
                 onComplete(nil)
                 return
             }

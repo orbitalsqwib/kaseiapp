@@ -11,10 +11,10 @@ import FirebaseDatabase
 class ItemsViewController: CardDetailVC, UITableViewDelegate, UITableViewDataSource, RequestItemCellProtocol {
     
     var titleText: String = ""
-    var delegate: RequestItemHandler?
+    weak var itemViewDelegate: RequestItemViewProtocol?
+    weak var basketDelegate: BasketHandlerProtocol?
     var itemIDs = [String]()
     var items = [RequestItem]()
-    var basketItems = [RequestItem]()
     
     let DBRef = Database.database().reference()
 
@@ -40,16 +40,20 @@ class ItemsViewController: CardDetailVC, UITableViewDelegate, UITableViewDataSou
                 }
                 counter -= 1
                 if counter == 0 {
-                    self.loadBasket()
+                    self.updateItemsFromBasket()
                     self.cardTableView.reloadData()
                 }
             }
         }
     }
     
-    func loadBasket() {
+    func updateItemsFromBasket() {
+        guard let delegate = basketDelegate else {
+            return
+        }
+        
         for item in items {
-            for basketItem in basketItems {
+            for basketItem in delegate.retrieveItems() {
                 if item.name == basketItem.name {
                     item.qty = basketItem.qty
                 }
@@ -73,15 +77,37 @@ class ItemsViewController: CardDetailVC, UITableViewDelegate, UITableViewDataSou
     }
     
     func plusClicked(for cell: RequestItemCell) {
-        updateCountForItemHandler(for: cardTableView, with: delegate, using: cell, items: items, modifier: 1)
+        guard let item = getItem(for: cell, in: cardTableView, with: items) else {
+            return
+        }
+        
+        basketDelegate?.update(item: item, modifier: 1, updateItems: { (updatedItems) in
+            if let viewDelegate = self.itemViewDelegate {
+                viewDelegate.updateView(with: updatedItems)
+            }
+            
+            self.updateItemsFromBasket()
+            self.cardTableView.reloadData()
+        })
     }
     
     func minusClicked(for cell: RequestItemCell) {
-        updateCountForItemHandler(for: cardTableView, with: delegate, using: cell, items: items, modifier: -1)
+        guard let item = getItem(for: cell, in: cardTableView, with: items) else {
+            return
+        }
+        
+        basketDelegate?.update(item: item, modifier: -1, updateItems: { (updatedItems) in
+            if let viewDelegate = self.itemViewDelegate {
+                viewDelegate.updateView(with: updatedItems)
+            }
+            
+            self.updateItemsFromBasket()
+            self.cardTableView.reloadData()
+        })
     }
     
     func cellTapped(for cell: RequestItemCell) { }
-
+    
     /*
     // MARK: - Navigation
 

@@ -132,7 +132,7 @@ class NewRequestViewController: UIViewController, UITableViewDelegate, UITableVi
         // activate action bar only if basket contains items
         actionBar.isHidden = basket.items.count <= 0
         
-        requestItemsTableView.reloadSections(.init(arrayLiteral: 1), with: .none)
+        requestItemsTableView.reloadData()
     }
     
     // MARK: - Navigation

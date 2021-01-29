@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--New Request-->
+        <!--Basket-->
         <scene sceneID="KDb-3R-2fZ">
             <objects>
                 <viewController id="2Go-Lu-LkQ" customClass="NewRequestViewController" customModule="Kasei" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +71,7 @@
                             <constraint firstItem="aQR-VV-HsJ" firstAttribute="leading" secondItem="JsI-fh-zPu" secondAttribute="leading" constant="16" id="wKh-fg-fOm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Request" largeTitleDisplayMode="always" id="eBR-to-MVg">
+                    <navigationItem key="navigationItem" title="Basket" largeTitleDisplayMode="always" id="eBR-to-MVg">
                         <barButtonItem key="rightBarButtonItem" id="zcP-7P-q25">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RZc-j8-bHI">
                                 <rect key="frame" x="362" y="6" width="32" height="32"/>

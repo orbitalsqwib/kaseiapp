@@ -26,7 +26,7 @@
 "kEf-Ej-at2.normalTitle" = "登入";
 
 /* Class = "UILabel"; text = "Our Partners:\n- TOUCH Community Services\n- Salvation Army Peacehaven\n- Food From The Heart\n\nMade with ❤️ by Eugene Long."; ObjectID = "mMO-pd-EeS"; */
-"mMO-pd-EeS.text" = "Our Partners:\n- TOUCH Community Services\n- Salvation Army Peacehaven\n- Food From The Heart\n\nMade with ❤️ by Eugene Long.";
+"mMO-pd-EeS.text" = "Our Partners:TBA\nMade with ❤️ by Eugene Long.";
 
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "mVq-db-RSn"; */
 "mVq-db-RSn.placeholder" = "密码";

@@ -186,8 +186,8 @@
 		CB53B08B256552EB0019DF5E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CB53B08C2565530B0019DF5E /* RequestItem.swift */,
 				CB53B090256554AB0019DF5E /* Request.swift */,
+				CB53B08C2565530B0019DF5E /* RequestItem.swift */,
 				CB53B0D72566407B0019DF5E /* ItemCategory.swift */,
 				CB3CADA825B92A61000E87A3 /* Basket.swift */,
 			);

@@ -86,7 +86,7 @@ class RequestItemCell: ElevatedTableViewCell {
     }
     
     func disableCounter() {
-        counterContainer.removeFromSuperview()
+        counterContainer.isHidden = true
     }
     
     func enableTapper() {
